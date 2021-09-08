@@ -42,7 +42,6 @@
     <el-dialog :visible.sync="dialogV" :before-close="handleClose" width="70%">
         <div class="card-base card-shadow--medium">
             <div class="gmap-location-search-bar">
-              Search Location:
               <gmap-autocomplete @place_changed="setPlace"></gmap-autocomplete>
             </div>
             <gmap-map ref="map" :center="center" :zoom="12" :options="{gestureHandling:'cooperative'}" map-type-id="roadmap" style="width: 100%; height: 500px">
@@ -269,5 +268,25 @@ a {
 
 td {
     padding: 10px;
+}
+
+.pac-target-input {
+    -webkit-appearance: none;
+    background-color: #FFFFFF;
+    background-image: none;
+    border-radius: 4px;
+    border: 1px solid #DCDFE6;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    color: #606266;
+    display: inline-block;
+    font-size: inherit;
+    height: 40px;
+    line-height: 40px;
+    outline: none;
+    padding: 0 15px;
+    -webkit-transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    width: 100%;
 }
 </style>

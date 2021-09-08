@@ -48,22 +48,6 @@
 			<!--<Footer v-if="footer === 'below'" :position="footer"/>-->
 		</div>
 
-		<vertical-nav 
-			:position="navPos" 
-			:collapse-nav="collapseNav" 
-			:open-sidebar.sync="openSidebar" 
-			@collapse-nav-toggle="collapseNav = !collapseNav" 
-			@push-page="closeSidebar" 
-			v-if="navPos === 'right'"/>
-
-    <vertical-nav
-        :position="navPos"
-        :collapse-nav="collapseNav"
-        :open-sidebar.sync="openSidebar"
-        @collapse-nav-toggle="collapseNav = !collapseNav"
-        @push-page="closeSidebar"
-        v-if="navPos === 'left'"/>
-
 		<Footer v-if="footer === 'above'" :position="footer"/>
 
 		<!-- <layout-picker :position="navPos" v-if="isLogged"/> -->
