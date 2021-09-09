@@ -42,7 +42,6 @@
     <el-dialog :visible.sync="dialogV" :before-close="handleClose" width="70%">
         <div class="card-base card-shadow--medium">
             <div class="gmap-location-search-bar">
-              Search Location:
               <gmap-autocomplete @place_changed="setPlace"></gmap-autocomplete>
             </div>
             <gmap-map ref="map" :center="center" :zoom="12" :options="{gestureHandling:'cooperative'}" map-type-id="roadmap" style="width: 100%; height: 500px">
