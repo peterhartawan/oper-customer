@@ -86,7 +86,7 @@ Vue.component('VueChartist', VueChartist)
 Vue.use(VueQuillEditor, /* { default global options } */)
 Vue.use(VueGoogleMaps, {
 	load: {
-		key: 'AIzaSyDAGlAcGkw6f9AOoV5lppxr_s8IgvVEX2I',
+		key: 'AIzaSyDPnbBqylWeHm5vL975bbLwuQYe5ZF4-pU',
 		libraries: 'places', // This is required if you use the Autocomplete plugin
 		// OR: libraries: 'places,drawing'
 		// OR: libraries: 'places,drawing,visualization'
