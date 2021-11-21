@@ -2,7 +2,7 @@
   <div class="page-table scrollable only-y" id="affix-container">
     <div class="container mb-200">
       <p class="font-weight-600">ACCOUNT</p>
-      <el-row :gutter="50">
+      <el-row :gutter="50" v-if="user.idrole == 2">
         <el-col :span="19" v-if="driverAcc !== null">
           <el-card shadow="always" :body-style="{padding: '5px'}" class="card-border">
             <el-row :gutter="20">
@@ -80,7 +80,7 @@
                         </el-col>
                     </el-row>
 
-                    <el-row type="flex"  justify="center" class="mt-10">
+                    <el-row type="flex"  justify="center" class="mt-10" v-if="user.idrole == 2">
                         <el-col :span="6"><el-button @click="editButton()" type="info" size="small" class="small-edit">Edit</el-button></el-col>
                         <el-col :span="spanPIN">
                             <el-button
@@ -191,6 +191,7 @@ export default {
   name: "ListDriver",
   data() {
     return {
+      user          : JSON.parse(localStorage.getItem('user')),
       currentPage   : 1,
       input         : "",
       affixEnabled  : true,
