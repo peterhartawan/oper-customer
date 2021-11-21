@@ -1,7 +1,7 @@
 <template>
   <div class="page-table scrollable only-y" id="affix-container">
     <div class="container mb-200">
-      <p class="font-weight-600">ACCOUNT</p>
+      <p class="font-weight-600" v-if="user.idrole == 2">ACCOUNT</p>
       <el-row :gutter="50" v-if="user.idrole == 2">
         <el-col :span="19" v-if="driverAcc !== null">
           <el-card shadow="always" :body-style="{padding: '5px'}" class="card-border">
