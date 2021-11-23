@@ -121,7 +121,7 @@
 
                 <el-col :span="12">
                     <el-row type="flex"  justify="center" :gutter="20" class="mt-10">
-                        <el-col :span="10">
+                        <el-col :span="user.idrole === 2 ? 10 : 16">
                             <el-input
                                     size="mini"
                                     placeholder="Search"
