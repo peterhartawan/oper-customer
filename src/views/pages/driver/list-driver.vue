@@ -131,7 +131,7 @@
                             </el-input>
                         </el-col>
 
-                        <el-col :span="6">
+                        <el-col :span="6" v-if="user.idrole === 2">
                             <el-select @change="filterStatus" v-model="status" filterable size="mini" placeholder="All Status">
                                 <el-option
                                         v-for="item in select"
