@@ -33,5 +33,8 @@ export default {
     },
     [mutation.SET_TOTAL_ACCOUNT_DRIVER](state, payload){
         state.totalAccountD = payload
+    },
+    [mutation.SET_LIST_REQ_DRIVER](state, payload){
+        state.listReqDriver = payload
     }
 };

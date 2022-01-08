@@ -30,6 +30,9 @@ export default {
 },
 [getter.GET_TOTAL_ACCOUNT_DRIVER](state){
     return state.totalAccountD
+},
+[getter.GET_LIST_REQ_DRIVER](state){
+    return state.listReqDriver
 }
 };
 

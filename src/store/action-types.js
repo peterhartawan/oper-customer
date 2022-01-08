@@ -53,9 +53,11 @@ export const EDIT_DRIVER_ENTERPRISE = 'driver/index/EDIT_DRIVER_ENTERPRISE';
 export const EDIT_DRIVER            = 'driver/index/EDIT_DRIVER';
 export const LIST_DRIVER_ASSIGNEE   = 'driver/index/LIST_DRIVER_ASSIGNEE';
 export const LIST_DRIVER_ENTERPRISE = 'driver/index/LIST_DRIVER_ENTERPRISE';
-export const ASSIGN_DRIVER          =  'driver/index/ASSIGN_DRIVER';
+export const ASSIGN_DRIVER          = 'driver/index/ASSIGN_DRIVER';
 export const SUSPEND_DRIVER         = 'driver/index/SUSPEND_DRIVER';
 export const RESEND_PIN             = 'driver/index/RESEND_PIN';
+export const LIST_REQ_DRIVER        = 'driver/index/LIST_REQ_DRIVER';
+export const CREATE_REQ_DRIVER      = 'driver/index/CREATE_REQ_DRIVER';
 
 //enterprise/index
 export const LIST_DATA_COR          = 'enterprise/index/LIST_DATA_COR';

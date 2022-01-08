@@ -19,7 +19,8 @@ const state = {
     detailDriver: null,
     driverAssignee: null,
     driverEnterprise: null,
-    totalAccountD: null
+    totalAccountD: null,
+    listReqDriver: null
 };
 
 

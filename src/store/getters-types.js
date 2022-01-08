@@ -34,6 +34,7 @@ export const GET_DRIVER_ASSIGNEE        = 'driver/index/GET_DRIVER_ASSIGNEE';
 export const GET_DRIVER_ENTERPRISE      = 'driver/index/GET_DRIVER_ENTERPRISE ';
 export const GET_TOTAL_ACCOUNT_DRIVER   = 'dispatcher/index/GET_TOTAL_ACCOUNT_DRIVER';
 export const GET_DRIVER_A_LIST          = 'dispatcher/index/GET_DRIVER_A_LIST';
+export const GET_LIST_REQ_DRIVER        = 'driver/index/GET_LIST_REQ_DRIVER';
 
 //vendor
 export const GET_DROPDOWN_VENDOR        = 'vendor/index/GET_DROPDOWN_VENDOR';

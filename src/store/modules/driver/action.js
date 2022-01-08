@@ -393,5 +393,50 @@ export default {
             dispatch(action.DATA_ERROR, err)
         }
     },
+    async [action.LIST_REQ_DRIVER]({commit, dispatch}, payload) {
+        try {
+            let token = localStorage.getItem('token');
+            let { data } = await localAxios.get('driver-requests',
+                {
+                    headers: {'Authorization': 'Bearer '+token}
+                });
+            let objList = {
+                dataList : data.data.data,
+                total   : data.data.total,
+                nextC   : data.data.next_page_url,
+                prevC   : data.data.prev_page_url,
+                firstP  : data.data.first_page_url,
+                fromPA  : data.data.from
+            }
+            commit(mutation.BUTTON_STATUS, false);
+            commit(mutation.SET_LIST_REQ_DRIVER, objList)
+
+        }catch (err) {
+            commit(mutation.BUTTON_STATUS, false)
+            dispatch(action.DATA_ERROR, err)
+        }
+    },
+
+    async [action.CREATE_REQ_DRIVER]({commit, dispatch}, payloads) {
+        try{
+            let token = localStorage.getItem('token');
+            const formData = new FormData()
+            formData.append('place_id', payloads.place_id)
+            formData.append('enterprise_id', payloads.enterprise_id)
+            formData.append('note', payloads.note)
+            formData.append('purpose_time', payloads.purpose_time)
+
+            let { data } = await localAxios.post('/driver-requests' ,
+                formData,
+                { headers: {'Authorization': 'Bearer '+token, 'Content-Type': 'multipart/form-data'}
+                })
+                commit(mutation.BUTTON_STATUS, false)
+                router.replace({ path: '/driver/request-list'})
+        }catch(err){
+            commit(mutation.BUTTON_STATUS, false)
+            swal(err.response.data.message,'', 'error')
+            dispatch(action.DATA_ERROR, err)
+        }
+    },
     
 };
