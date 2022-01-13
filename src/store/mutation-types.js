@@ -44,6 +44,7 @@ export const SET_DRIVER_ENTERPRISE      = 'driver/index/SET_DRIVER_ENTERPRISE';
 export const SET_TOTAL_ACCOUNT_DRIVER   = 'dispatcher/index/SET_TOTAL_ACCOUNT_DRIVER';
 export const SET_DISPATCHER_AVAILABLE   = 'dispatcher/index/SET_DISPATCHER_AVAILABLE';
 export const SET_DRIVER_D_AVAILABLE     = 'dispatcher/index/SET_DRIVER_D_AVAILABLE';
+export const SET_LIST_REQ_DRIVER        = 'driver/index/SET_LIST_REQ_DRIVER';
 
 //enterprise/index
 export const SET_LIST_COR               = 'enterprise/index/SET_LIST_COR'

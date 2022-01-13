@@ -1,6 +1,8 @@
 import ListDriver from '../views/pages/driver/list-driver.vue'
 import EditDriver from '../views/pages/driver/edit-driver.vue'
 import NewDriver from '../views/pages/driver/new-driver.vue'
+import RequestList from '../views/pages/driver/request-list.vue'
+import RequestDriver from '../views/pages/driver/request-driver.vue'
 import DetailDriver from '../views/pages/driver/detail-driver.vue'
 import ReportingDriver from '../views/pages/driver/reporting-driver.vue'
 
@@ -31,6 +33,30 @@ export default [
             title: 'New Driver',
             tags: ['driver']
         },
+    },
+    {
+        path: '/driver/request-list',
+        name: 'RequestList',
+        component: RequestList,
+        meta: {
+            auth: true,
+            layout: layouts.navLeft,
+            searchable: true,
+            title: 'Request Driver List',
+            tags: ['driver']
+        }
+    },
+    {
+        path: '/driver/request-driver',
+        name: 'RequestDriver',
+        component: RequestDriver,
+        meta: {
+            auth: true,
+            layout: layouts.navLeft,
+            searchable: true,
+            title: 'Request Driver',
+            tags: ['driver']
+        }
     },
     {
         path: '/detail-driver/:id',
