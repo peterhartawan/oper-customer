@@ -421,8 +421,9 @@ export default {
         try{
             let token = localStorage.getItem('token');
             const formData = new FormData()
-            formData.append('place_id', payloads.place_id)
             formData.append('enterprise_id', payloads.enterprise_id)
+            formData.append('place_id', payloads.place_id)
+            formData.append('number_of_drivers', payloads.number_of_drivers)
             formData.append('note', payloads.note)
             formData.append('purpose_time', payloads.purpose_time)
 

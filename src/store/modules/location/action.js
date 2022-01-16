@@ -30,7 +30,6 @@ async [action.DROPDOWN_LOCATION]({commit, dispatch}, payload) {
     try{
         let token           = localStorage.getItem('token')
         let userProfile     = JSON.parse(localStorage.getItem('user')).client_enterprise_identerprise
-        console.log('user pro pro ', userProfile)
         let {data} = await localAxios.get('/places/?identerprise='+userProfile+'&dropdown=1', {
             headers: {'Authorization': 'Bearer '+token}
         })

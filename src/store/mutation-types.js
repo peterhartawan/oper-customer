@@ -27,6 +27,7 @@ export const EXPORT_ATTENDANCE          = 'attendance/index/EXPORT_ATTENDANCE'
 
 //vendor
 export const SET_PROFILE_VENDOR         = 'vendor/index/SET_PROFILE_VENDOR';
+export const SET_ENTERPRISE_ID          = 'vendor/index/SET_ENTERPRISE_ID';
 export const SET_VENDOR_RES             = 'vendor/index/SET_VENDOR_RES';
 export const SET_VENDOR_DETAIL          = 'vendor/index/SET_VENDOR_DETAIL';
 export const SET_DROPDOWN_VENDOR        = 'vendor/index/SET_DROPDOWN_VENDOR'
