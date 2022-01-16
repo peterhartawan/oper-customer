@@ -20,6 +20,9 @@ export default {
     [getter.GET_VENDOR_PROFILE](state){
         return state.VendorID
     },
+    [getter.GET_ENTERPRISE_ID](state){
+        return state.EnterpriseID
+    },
     [getter.GET_ADMIN_DATA_VEND](state){
         return state.dataAdmin
     }

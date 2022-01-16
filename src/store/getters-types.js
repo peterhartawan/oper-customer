@@ -44,6 +44,7 @@ export const VENDOR                     = 'vendor/index/VENDOR';
 export const GET_VEN_TOTAL              = 'vendor/index/GET_VEN_TOTAL';
 export const GET_VENDOR_PROFILE         = 'vendor/index/GET_VENDOR_PROFILE';
 export const GET_ADMIN_DATA_VEND        = 'vendor/index/GET_ADMIN_DATA_VEND';
+export const GET_ENTERPRISE_ID          = 'vendor/index/GET_ENTERPRISE_ID';
 
 //corporate/index.js
 export const GET_LIST                   = 'corporate/index/GET_LIST'

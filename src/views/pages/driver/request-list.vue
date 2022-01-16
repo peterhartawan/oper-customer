@@ -1,13 +1,95 @@
 <template>
   <div class="page-table scrollable only-y" id="affix-container">
     <div class="card-base card-shadow--medium bg-white" v-loading="loading">
-      <el-row :gutter="20" type="flex" justify="end">
+      <el-row
+        type="flex"
+        :gutter="10"
+        justify="end"
+        style="margin-top: 20px"
+        v-if="this.idrole === 2"
+      >
+        <el-col :span="4">
+          <el-input placeholder="Search" v-model="search"> </el-input>
+        </el-col>
+        <!-- <el-col :span="4">
+          <el-input
+            placeholder="Nama Enterprise"
+            v-model="form.enterprise_name"
+          >
+          </el-input>
+        </el-col>
+        <el-col :span="4">
+          <el-select v-model="dropdown_location" placeholder="Pilih Lokasi">
+            <el-option
+              v-for="item in dropdown_location"
+              :key="item.value"
+              :label="item.name"
+              :value="item.idplaces"
+            ></el-option>
+          </el-select>
+        </el-col>
+        <el-col :span="3">
+          <el-date-picker
+            format="dd MMM yyyy"
+            value-format="dd MMM yyyy"
+            style="width: 100%"
+            v-model="form.date"
+            type="date"
+            placeholder="Tanggal"
+          ></el-date-picker>
+        </el-col>
+        <el-col :span="3">
+          <el-time-picker
+            v-model="form.time"
+            type="time"
+            placeholder="00:00"
+            format="HH:mm"
+            value-format="HH:mm"
+            style="width: 100%"
+          >
+          </el-time-picker>
+        </el-col>
+        <el-col :span="3">
+          <el-input placeholder="Jumlah" v-model="form.numbers_of_drivers">
+          </el-input>
+        </el-col>
+        <el-col :span="4">
+          <el-input placeholder="Note" v-model="form.note"> </el-input>
+        </el-col>
+
+        <el-col :span="1">
+          <el-button
+            icon="el-icon-search"
+            @click="searchSquare"
+            style="background: #d50000; font-size: 17px; color: white"
+            square
+          >
+          </el-button>
+        </el-col> -->
+      </el-row>
+      <el-row v-if="this.idrole === 5" :gutter="20" type="flex" justify="end">
         <el-button @click="reqDriver" type="primary">
           Request Driver
         </el-button>
       </el-row>
       <el-row>
-        <el-table :data="tableData" style="width: 100%">
+        <el-table
+          :data="
+            tableData.filter(
+              (data) =>
+                !search ||
+                data.enterprise.name
+                  .toLowerCase()
+                  .includes(search.toLowerCase()) ||
+                data.place.name.toLowerCase().includes(search.toLowerCase()) ||
+                data.date.toLowerCase().includes(search.toLowerCase()) ||
+                data.time.toLowerCase().includes(search.toLowerCase()) ||
+                data.note.toLowerCase().includes(search.toLowerCase()) ||
+                data.number_of_drivers.toString().includes(search.toLowerCase())
+            )
+          "
+          style="width: 100%"
+        >
           <el-table-column
             type="index"
             align="center"
@@ -15,7 +97,13 @@
             width="60"
           ></el-table-column>
           <el-table-column
-            prop="place_id"
+            v-if="this.idrole === 2"
+            prop="enterprise.name"
+            align="center"
+            label="ENTERPRISE"
+          ></el-table-column>
+          <el-table-column
+            prop="place.name"
             align="center"
             label="LOKASI"
           ></el-table-column>
@@ -30,6 +118,12 @@
             header-align="center"
             align="center"
             label="JAM"
+          ></el-table-column>
+          <el-table-column
+            prop="number_of_drivers"
+            header-align="center"
+            align="center"
+            label="JUMLAH"
           ></el-table-column>
           <el-table-column
             prop="note"
@@ -66,17 +160,15 @@ export default {
   name: "RequestList",
   data() {
     return {
+      search: "",
+      status: "",
+      type: "",
+      dropdown_location: "",
       totalData: null,
       currentPage: null,
-      tableData: [
-        {
-          location: "",
-          date: "",
-          time: "",
-          note: "",
-          purpose_time: "",
-        },
-      ],
+      idrole: "",
+      tableData: [],
+      form: {},
     };
   },
   components: {
@@ -108,9 +200,32 @@ export default {
         status: this.status,
       });
     },
+    findLocation(id) {
+      this.list.forEach((element) => {});
+    },
+    formatTime() {
+      this.form.purpose_time = moment(
+        this.form.date + " " + this.form.time
+      ).format("YYYY-MM-DD hh:mm:ss");
+    },
+    searchSquare() {
+      formatTime();
+      let obj = {
+        page: this.currentPage,
+        path: this.$route.path,
+        enterprise_name: this.form.enterprise.name,
+        place_name: this.form.place.name,
+        purpose_time: this.form.purpose_time,
+        number_of_drivers: this.form.number_of_drivers,
+        idvendor: this.form.idvendor,
+      };
+      this.$store.dispatch(action.LIST_ORDER_CLIENT, obj);
+    },
   },
   async created() {
     await this.listData;
+    await this.profile;
+    await this.dropdown_location;
   },
   computed: {
     ...mapGetters({
@@ -119,19 +234,24 @@ export default {
       venID: getter.GET_VENDOR_PROFILE,
       button: getter.GET_BUTTON,
       loading: getter.GET_LOADING,
+      vendor: getter.VENDOR,
+      profile: getter.GET_DATA_PROFILE,
     }),
   },
   async mounted() {
+    this.dropdown_location = await this.$store.dispatch(
+      action.DROPDOWN_LOCATION
+    );
     await this.$store.dispatch(action.LIST_REQ_DRIVER);
     this.$store.dispatch(action.VENDOR_PROFILE);
-    this.tableData = this.listData.dataList;
-    this.totalData = this.listData.total;
-    this.currentPage = this.listData.fromPA;
-
     this.listData.dataList.forEach((el) => {
       el.date = moment(el.purpose_time).format("DD MMMM YYYY");
       el.time = moment(el.purpose_time).format("hh:mm");
     });
+    this.tableData = this.listData.dataList;
+    this.totalData = this.listData.total;
+    this.currentPage = this.listData.fromPA;
+    this.idrole = this.profile.idrole;
   },
 };
 </script>

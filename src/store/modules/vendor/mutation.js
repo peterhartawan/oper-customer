@@ -22,6 +22,9 @@ export default {
     [mutation.SET_PROFILE_VENDOR](state, payload){
         state.VendorID = payload.idVendor
     },
+    [mutation.SET_ENTERPRISE_ID](state, payload){
+        state.EnterpriseID = payload.idEnterprise
+    },
     [mutation.SET_DATA_ADMIN_VEND](state, payload){
         state.dataAdmin = payload
     }

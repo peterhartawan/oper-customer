@@ -203,8 +203,11 @@ export default {
             let objList = {
                 idVendor: data.data.vendor_idvendor,
             }
-            // console.log('ini me', data.data.vendor_idvendor)
+            let entID = {
+                idEnterprise: data.data.enterprise.identerprise,
+            }
             commit(mutation.SET_PROFILE_VENDOR, objList)
+            commit(mutation.SET_ENTERPRISE_ID, entID)
         } catch (err) {
             dispatch(action.DATA_ERROR, err)
         }
