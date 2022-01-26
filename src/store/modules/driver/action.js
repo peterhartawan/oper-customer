@@ -396,7 +396,7 @@ export default {
     async [action.LIST_REQ_DRIVER]({commit, dispatch}, payload) {
         try {
             let token = localStorage.getItem('token');
-            let { data } = await localAxios.get('driver-requests',
+            let { data } = await localAxios.get('driver-requests?enterprise_id='+payload,
                 {
                     headers: {'Authorization': 'Bearer '+token}
                 });
