@@ -242,7 +242,10 @@ export default {
     this.dropdown_location = await this.$store.dispatch(
       action.DROPDOWN_LOCATION
     );
-    await this.$store.dispatch(action.LIST_REQ_DRIVER);
+    await this.$store.dispatch(
+      action.LIST_REQ_DRIVER,
+      this.profile.idrole === 5 ? this.profile.enterprise.identerprise : ""
+    );
     this.$store.dispatch(action.VENDOR_PROFILE);
     this.listData.dataList.forEach((el) => {
       el.date = moment(el.purpose_time).format("DD MMMM YYYY");

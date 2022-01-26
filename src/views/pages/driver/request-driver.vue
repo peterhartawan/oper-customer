@@ -234,9 +234,9 @@ export default {
     ...mapGetters({
       error: getter.GET_ERROR,
       venID: getter.GET_VENDOR_PROFILE,
-      entID: getter.GET_ENTERPRISE_ID,
       button: getter.GET_BUTTON,
       data: getter.GET_TEMPLATE_ID,
+      profile: getter.GET_DATA_PROFILE,
     }),
     buttonStatuz: function () {
       return (this.form.fullscreen_loading = this.button);
@@ -248,7 +248,7 @@ export default {
   async created() {
     let data = await this.$store.dispatch(action.DROPDOWN_LOCATION);
     this.options = data;
-    this.form.enterprise_id = this.entID;
+    this.form.enterprise_id = this.profile.enterprise.identerprise;
   },
 };
 </script>
