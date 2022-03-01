@@ -378,6 +378,7 @@
 <script>
 import { detect } from 'detect-browser'
 import { navMixin } from "../mixins/core/navMixin";
+import * as action from "../store/action-types";
 
 const browser = detect()
 
@@ -387,6 +388,11 @@ export default {
 	mixins: [navMixin],
 	data() {
 		return {
+			payload: {
+				identerprise: null,
+				page: 1,
+				reason_suspend: null,
+            },
 			isIe: true,
 			isEdge: true,
 			activeLink: null
@@ -395,6 +401,11 @@ export default {
 	methods: {
 		goto(index, indexPath) {
 			if(index.charAt(0) === '/') {
+				if(index.includes('/location-enterprise/')){
+					this.payload.identerprise = JSON.parse(localStorage.getItem('user')).enterprise.identerprise;
+					this.$store.dispatch(action.DATA_ID_CORP, this.payload.identerprise);
+					this.$store.dispatch(action.LIST_LOCATION, this.payload);
+				}
 				this.$router.push(index)
 				this.$emit('push-page', {page:index})
 			}

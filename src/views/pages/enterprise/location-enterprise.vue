@@ -20,14 +20,23 @@
             </el-col>
             <el-col :span="9">
                 <el-row style="margin-top: 10px">
-                    <el-col :span="4">
-                        <el-button @click="Cancel()" size="mini" type="info">Back</el-button>
-                    </el-col>
-                    <el-col :offset="1" :span="15">
-                        <el-input placeholder="Search" @keyup.native="searchChange" v-model="input4">
-                            <i slot="suffix" class="el-input__icon el-icon-search"></i>
-                        </el-input>
-                    </el-col>
+                    <div v-if="isAdminVendor">
+                        <el-col :span="4">
+                            <el-button @click="Cancel()" size="mini" type="info">Back</el-button>
+                        </el-col>
+                        <el-col :offset="1" :span="12">
+                            <el-input placeholder="Search" @keyup.native="searchChange" v-model="input4">
+                                <i slot="suffix" class="el-input__icon el-icon-search"></i>
+                            </el-input>
+                        </el-col>
+                    </div>
+                    <div v-else>
+                        <el-col :offset="1" :span="16">
+                            <el-input placeholder="Search" @keyup.native="searchChange" v-model="input4">
+                                <i slot="suffix" class="el-input__icon el-icon-search"></i>
+                            </el-input>
+                        </el-col>
+                    </div>
                     <el-col :offset="1" :span="1">
                         <el-button @click="Create()" style="text-align: center; background-color: #D50000;" type="danger"><i class="mdi mdi-plus"></i></el-button>
                     </el-col>
@@ -111,6 +120,7 @@ export default {
             tableData: null,
             input4: null,
             place: null,
+            isAdminVendor: false
         };
     },
     components: {
@@ -273,6 +283,7 @@ export default {
         }
     },
     async created() {
+        this.isAdminVendor = JSON.parse(localStorage.getItem('user')).idrole == 2
         this.payload.identerprise = await this.enterprise.identerprise
         await this.$store.dispatch(action.LIST_LOCATION, this.payload);
         await this.listData

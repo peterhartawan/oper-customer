@@ -81,6 +81,7 @@
                 <el-select
                   v-model="origin"
                   @change="originL"
+                  filterable
                   placeholder="Select Origin"
                 >
                   <el-option

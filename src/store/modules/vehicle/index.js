@@ -21,7 +21,7 @@ const actions = {
     async [action.VEHICLE_BRAND]({commit, dispatch}, payload) {
         try {
             let token = localStorage.getItem('token');
-            let { data } = await localAxios.get(`${typeS.vehicle}brand`,
+            let { data } = await localAxios.get(`${typeS.vehicle}brand?dropdown=1`,
                 { headers: {'Authorization': 'Bearer '+token }
                 })
             return data.data.data

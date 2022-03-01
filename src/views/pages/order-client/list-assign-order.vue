@@ -147,7 +147,7 @@
                         </el-table-column>
                         <el-table-column
                                 v-if="changeTab !== 'open'"
-                                prop="nama_driver"
+                                prop="driver.user.nama_driver"
                                 label="DRIVER INFO">
                         </el-table-column>
                         <el-table-column
@@ -155,7 +155,7 @@
                                 label="USER CUSTOMER">
                         </el-table-column>
                         <el-table-column
-                                prop="nama_client_enterprise"
+                                prop="enterprise.nama_client_enterprise"
                                 label="ENTERPRISE NAME">
                         </el-table-column>
                         <el-table-column
