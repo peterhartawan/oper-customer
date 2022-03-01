@@ -144,6 +144,13 @@
               align="center"
               label="DRIVER INFO"
             ></el-table-column>
+            <div v-if="isAdminVendor">
+              <el-table-column
+                prop="nama_enterprise"
+                align="center"
+                label="ENTERPRISE"
+              ></el-table-column>
+            </div>
             <el-table-column
               prop="clock_in"
               header-align="center"
@@ -252,6 +259,7 @@ export default {
       redIcon: require("@/assets/images/red-dot.png"),
       blueDot: require("@/assets/images/blue-dot.png"),
       window_open: false,
+      isAdminVendor: false
     };
   },
   components: {
@@ -545,6 +553,7 @@ export default {
     },
   },
   async created() {
+    this.isAdminVendor = JSON.parse(localStorage.getItem('user')).idrole == 2
     await this.$store.dispatch(action.LIST_ATT_DRIVER, this.currentPage);
     await this.listData;
     this.markers = [];

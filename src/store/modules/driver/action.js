@@ -64,7 +64,7 @@ export default {
     async [action.DROPDOWN_DRIVER]({commit, dispatch}, payload) {
         try{
             let token = localStorage.getItem('token')
-            let {data} = await localAxios.get('/driver/?dropdown=1&limit=100'+(payload ? '&q='+payload : ''), {
+            let {data} = await localAxios.get('/driver/?dropdown=1&limit=300'+(payload ? '&q='+payload : ''), {
                 headers: {'Authorization': 'Bearer '+token}
             })
             let objList = {
