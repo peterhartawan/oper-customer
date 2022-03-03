@@ -99,6 +99,7 @@
               <el-select
                 v-model="destination"
                 @change="destionationL"
+                filterable
                 placeholder="Select Destination"
               >
                 <el-option
