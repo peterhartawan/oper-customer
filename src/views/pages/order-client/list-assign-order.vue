@@ -157,6 +157,10 @@
                         <el-table-column
                                 prop="user_fullname"
                                 label="USER CUSTOMER">
+                        </el-table-column>                        
+                        <el-table-column
+                                prop="booking_time"
+                                label="BOOKING TIME">
                         </el-table-column>
                         <el-table-column
                                 prop="enterprise.nama_client_enterprise"

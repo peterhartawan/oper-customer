@@ -229,9 +229,11 @@ export default {
             let token = localStorage.getItem('token');
             let url;
             (payload.type === 'order') ? url = `${typeS.order}total-order-${payload.v}`: url  = `/employee/total-order-${payload.v}`
+            console.log(url)
             let { data } = await localAxios.get(url,
                 { headers: {'Authorization': 'Bearer '+token }
                 });
+            console.log(data.data)
             commit(mutation.SET_LOADING, false);
             commit(mutation.SET_ORDER_BAR_GRAPHIC, data.data);
         }

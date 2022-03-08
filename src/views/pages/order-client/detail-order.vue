@@ -11,7 +11,7 @@
                         </div>
                     </el-col>
                     <el-col :span="16" style="overflow-wrap: break-word">
-                        <span class="p-name">{{ order.user_fullname }}</span>
+                        <span class="p-name">{{ order.driver.user.name }}</span>
                         <span class="p">{{order.user_phonenumber}}</span>
                         <span class="p">{{order.email}}</span>
                     </el-col>

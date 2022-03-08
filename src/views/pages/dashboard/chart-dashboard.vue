@@ -63,29 +63,39 @@
                     <el-col :lg="24">
                         <el-card shadow="always" class="card-border" :body-style="{padding: '5px'}">
                             <el-row :gutter="20">
-                                <el-col :span="8">
+                                <el-col :span="6">
                                     <el-row class="font-icon line" justify="center">
-                                        <el-col :span="9">
+                                        <el-col :span="21">
                                             <!--<span class="mdi mdi-package-variant red-icon"></span>-->
                                             <img src="../../../assets/oper_asset/open.png" class="drive-acount">
                                         </el-col>
-                                        <el-col :span="15" class="text-center font-weight-600 font-size-45">
+                                        <el-col :span="3" class="text-center font-weight-600 font-size-45">
                                                 {{dashboard.total_order_open}}
                                         </el-col>
                                     </el-row>
                                 </el-col>
-                                <el-col :span="8">
+                                <el-col :span="6">
                                     <el-row class="font-icon line" justify="center">
-                                        <el-col :span="9">
+                                        <el-col :span="21">
                                             <!--<span class="mdi mdi-clock red-icon"></span>-->
                                             <img src="../../../assets/oper_asset/progress.png" class="drive-acount">
                                         </el-col>
-                                        <el-col :span="15" class="text-center font-weight-600 font-size-45">
+                                        <el-col :span="3" class="text-center font-weight-600 font-size-45">
                                             {{dashboard.total_order_inprogress}}
                                         </el-col>
                                     </el-row>
                                 </el-col>
-                                <el-col :span="8">
+                                <el-col :span="6">
+                                    <el-row class="font-icon line" justify="center">
+                                        <el-col :span="21">
+                                            <img src="../../../assets/oper_asset/cancel_red.png" class="drive-acount">
+                                        </el-col>
+                                        <el-col :span="3" class="text-center font-weight-600 font-size-45">
+                                            {{dashboard.total_order_canceled}}
+                                        </el-col>
+                                    </el-row>
+                                </el-col>
+                                <el-col :span="6">
                                     <el-row class="font-icon" justify="center">
                                         <el-col :span="9">
                                             <!--<span class="mdi mdi-check red-icon"></span>-->
@@ -121,29 +131,40 @@
                         <el-col :lg="24">
                             <el-card shadow="always" class="card-border" :body-style="{padding: '5px'}" >
                                 <el-row :gutter="20">
-                                    <el-col :span="8">
+                                    <el-col :span="6">
                                         <el-row class="font-icon line" justify="center">
-                                            <el-col :span="9">
+                                            <el-col :span="21">
                                                 <!--<span class="mdi mdi-package-variant red-icon"></span>-->
                                                 <img src="../../../assets/oper_asset/open.png" class="drive-acount">
                                             </el-col>
-                                            <el-col :span="15" class="text-center font-weight-600 font-size-45">
+                                            <el-col :span="3" class="text-center font-weight-600 font-size-45">
                                                 {{dashboard.total_task_open }}
                                             </el-col>
                                         </el-row>
                                     </el-col>
-                                    <el-col :span="8">
+                                    <el-col :span="6">
                                         <el-row class="font-icon line" justify="center">
-                                            <el-col :span="9">
+                                            <el-col :span="21">
                                                 <!--<span class="mdi mdi-clock red-icon"></span>-->
                                                 <img src="../../../assets/oper_asset/progress.png" class="drive-acount">
                                             </el-col>
-                                            <el-col :span="15" class="text-center font-weight-600 font-size-45">
+                                            <el-col :span="3" class="text-center font-weight-600 font-size-45">
                                                 {{dashboard.total_task_inprogress }}
                                             </el-col>
                                         </el-row>
                                     </el-col>
-                                    <el-col :span="8">
+                                    <el-col :span="6">
+                                        <el-row class="font-icon line" justify="center">
+                                            <el-col :span="21">
+                                                <!--<span class="mdi mdi-clock red-icon"></span>-->
+                                                <img src="../../../assets/oper_asset/cancel_red.png" class="drive-acount">
+                                            </el-col>
+                                            <el-col :span="3" class="text-center font-weight-600 font-size-45">
+                                                {{dashboard.total_task_canceled}}
+                                            </el-col>
+                                        </el-row>
+                                    </el-col>
+                                    <el-col :span="6">
                                         <el-row class="font-icon" justify="center">
                                             <el-col :span="9">
                                                 <!--<span class="mdi mdi-check red-icon"></span>-->
