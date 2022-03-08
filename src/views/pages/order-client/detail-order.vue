@@ -11,7 +11,7 @@
                         </div>
                     </el-col>
                     <el-col :span="16" style="overflow-wrap: break-word">
-                        <span class="p-name">{{ order.user_fullname }}</span>
+                        <span class="p-name">{{ order.driver.user.name }}</span>
                         <span class="p">{{order.user_phonenumber}}</span>
                         <span class="p">{{order.email}}</span>
                     </el-col>
@@ -65,15 +65,19 @@
                     <dd style="overflow-wrap: break-word">{{ `${order.message}` }}</dd>
                 </dl>
             </el-col>
-            <el-col :span="5"class="text-center">
+            <el-col :span="5" class="text-center">
                 <span class="p font-weight-600 margin-bottom-10">STATUS</span>
                 <div v-if="status === 'ORDER_INPROGRESS'">
                     <img src="../../../assets/oper_asset/progress.png" alt="" style="width: 20%">
                     <span class="p margin-top-10">IN PROGRESS</span>
                 </div>
-                <div v-else>
+                <div v-else-if="status === 'ORDER_COMPLETED'">
                     <img src="../../../assets/oper_asset/completed.png" alt="" style="width: 20%">
                     <span class="p margin-top-10">COMPLETED</span>
+                </div>
+                <div v-else-if="status === 'ORDER_CANCELED'">
+                    <img src="../../../assets/oper_asset/cancel_red.png" alt="" style="width: 20%">
+                    <span class="p margin-top-10">CANCELED</span>
                 </div>
             </el-col>
         </el-row>
