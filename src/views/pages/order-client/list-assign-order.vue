@@ -14,10 +14,6 @@
                         <img src="../../../assets/oper_asset/inprogress_red.png" class="drive-acount" v-if="changeTab === 'inprogress'">
                         <img src="../../../assets/oper_asset/inprogress_grey.png" class="drive-acount" v-else>
                     </el-radio-button>
-                    <el-radio-button label="cancel">
-                        <img src="../../../assets/oper_asset/cancelled_red.png" class="drive-acount" v-if="changeTab === 'cancel'">
-                        <img src="../../../assets/oper_asset/cancelled_grey.png" class="drive-acount" v-else>
-                    </el-radio-button>
                     <el-radio-button label="complete">
                         <img src="../../../assets/oper_asset/completed_red.png" class="drive-acount" v-if="changeTab === 'complete'">
                         <img src="../../../assets/oper_asset/completed_grey.png" class="drive-acount" v-else>

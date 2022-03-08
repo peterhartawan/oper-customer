@@ -12,10 +12,6 @@
                     <img src="../../../assets/oper_asset/inprogress_red.png" class="drive-acount" v-if="changeTab === 'inprogress'">
                     <img src="../../../assets/oper_asset/inprogress_grey.png" class="drive-acount" v-else>
                 </el-radio-button>
-                <el-radio-button label="cancel">
-                    <img src="../../../assets/oper_asset/cancelled_red.png" class="drive-acount" v-if="changeTab === 'cancel'">
-                    <img src="../../../assets/oper_asset/cancelled_grey.png" class="drive-acount" v-else>
-                </el-radio-button>
                 <el-radio-button label="complete">
                     <img src="../../../assets/oper_asset/completed_red.png" class="drive-acount" v-if="changeTab === 'complete'">
                     <img src="../../../assets/oper_asset/completed_grey.png" class="drive-acount" v-else>
@@ -253,13 +249,7 @@
         async created(){
             let userProfile = JSON.parse(localStorage.getItem('user')).idrole;
             this.path = this.$route.path === '/order/open';
-            if(this.$route.path == '/order/inprogress')
-                this.changeTab = 'inprogress'
-            else if(this.$route.path == '/order/complete')
-                this.changeTab = 'complete'
-            else
-                this.changeTab = 'cancel'
-            // (this.$route.path == '/order/complete') ? this.changeTab = 'complete' : this.changeTab = 'inprogress';
+            (this.$route.path == '/order/complete') ? this.changeTab = 'complete' : this.changeTab = 'inprogress';
             this.role = userProfile;
             let start, end;
                 if(this.form.range_date === null || this.form.range_date === ''){
