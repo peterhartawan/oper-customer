@@ -200,7 +200,7 @@ export default {
         }else if(payload.radio == 2){
             try{  
                 let token = localStorage.getItem('token')
-            
+                    console.log('/attendance/reporting/?type=driver&userid='+payload.iduser+'&start_date='+payload.startdate+'&end_date='+payload.duedate+'&page='+payload.page)
                     let {data} = await localAxios.get('/attendance/reporting/?type=driver&userid='+payload.iduser+'&start_date='+payload.startdate+'&end_date='+payload.duedate+'&page='+payload.page, {
                         headers: {'Authorization': 'Bearer '+token}
                     })

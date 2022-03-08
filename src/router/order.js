@@ -25,6 +25,18 @@ export default {
             }
         },
         {
+            path: 'cancel',
+            name: 'cancel',
+            component: ListOrder,
+            meta: {
+                auth: true,
+                layout: layouts.navLeft,
+                searchable: true,
+                title: 'Canceled Order',
+                tags: ['editor']
+            }
+        },
+        {
             path: 'complete',
             name: 'complete',
             component: ListOrder,
