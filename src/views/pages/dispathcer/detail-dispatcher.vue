@@ -105,15 +105,15 @@ export default {
     },
     methods: {
         inspector() {
-            router.replace('/pic-task-list')
+            router.push('/pic-task-list')
             this.$store.commit(mutation.SET_ID_ENTERPRISE, this.enterprise.identerprise)
         },
         templateTask() {
-            router.replace('/template-list')
+            router.push('/template-list')
             this.$store.commit(mutation.SET_ID_ENTERPRISE, this.enterprise.identerprise)
         },
         editAdmin() {
-            router.replace('/edit-admin')
+            router.push('/edit-admin')
             this.$store.commit(mutation.SET_ID_ENTERPRISE, this.enterprise.identerprise)
         },
         resendActivation(){
@@ -186,7 +186,7 @@ export default {
             })
         },
         backButton() {
-            router.replace('/dispatcher')
+            router.push('/dispatcher')
         },
         imgAlt(event) {
             event.target.src = require("@/assets/images/avatar-2.jpg");

@@ -87,7 +87,7 @@ export default {
 
     methods: {
         newVen() {
-            this.$router.replace("NewVendor");
+            this.$router.push("NewVendor");
         },
         handlePageChange(page) {
             this.currentPage = page;
@@ -105,7 +105,7 @@ export default {
         },
         Cancel() {
             this.$store.dispatch(action.LIST_EMPLOYEE, 1);
-            this.$router.replace({
+            this.$router.push({
                 path: "/employee"
             });
         },
@@ -119,7 +119,7 @@ export default {
 
         getId(id) {
             this.$store.dispatch(action.DETAIL_POSITION, id.idemployee_position);
-            this.$router.replace({
+            this.$router.push({
                 path: "/employee/list-position/" + id.idemployee_position
             });
         },

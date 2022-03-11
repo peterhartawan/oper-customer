@@ -307,21 +307,21 @@ export default {
         async inspector() {
             this.$store.commit(mutation.SET_LOADING, true);
             await this.$store.commit(mutation.SET_ID_ENTERPRISE, this.enterprise.identerprise)
-            router.replace('/pic-task-list')
+            router.push('/pic-task-list')
         },
         templateTask() {
-            router.replace('/template-list')
+            router.push('/template-list')
             this.$store.commit(mutation.SET_ID_ENTERPRISE, this.enterprise.identerprise)
         },
         addButton() {
             this.$store.commit(mutation.BUTTON_STATUS, false)
-            router.replace(`/new-admin-enterprise/${this.enterprise.identerprise}`)
+            router.push(`/new-admin-enterprise/${this.enterprise.identerprise}`)
         },
         editAdmin(e) {
             this.$store.commit(mutation.BUTTON_STATUS, false)
             this.$store.commit(mutation.SET_DATA_ADMIN_ENTERPRISE, e);
             this.$store.commit(mutation.SET_ID_ENTERPRISE, this.enterprise.identerprise)
-            router.replace('/edit-admin')
+            router.push('/edit-admin')
         },
         resendActivation() {
             let obj = {
@@ -407,12 +407,12 @@ export default {
             })
         },
         backLCorp() {
-            router.replace('/enterprise')
+            router.push('/enterprise')
 
         },
         async location() {
             this.$store.dispatch(action.LIST_LOCATION, this.payload);
-            this.$router.replace({
+            this.$router.push({
                 path: "/location-enterprise/" + this.enterprise.identerprise
             });
         }

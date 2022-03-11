@@ -288,7 +288,7 @@ export default {
                 fromPA      : null,
                 totalPE     : null
             };
-            router.replace('/order/open')
+            router.push('/order/open')
             this.$store.commit(mutation.TRACKING_ORDER, objList)
         },
         async cancelOrder() {
@@ -317,7 +317,7 @@ export default {
         buttonSearch() {},
         // idOrderButton(){
 
-        // router.replace('/order/tracking')
+        // router.push('/order/tracking')
         // },
         imgAlt(event) {
             event.target.src = this.alt;

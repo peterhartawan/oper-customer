@@ -293,7 +293,7 @@ export default {
         editButton() {},
         enterpriseDriver() {},
         backLCorp() {
-            router.replace('/employee/inprogress')
+            router.push('/employee/inprogress')
         },
         async cancelTask() {
             const {

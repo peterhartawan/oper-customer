@@ -73,7 +73,7 @@ export default {
     },
     methods: {
         newTemplate() {
-            this.$router.replace("/new-template-task");
+            this.$router.push("/new-template-task");
             this.$store.commit(mutation.SET_ID_ENTERPRISE, this.identer);
         },
         handlePageChange(page) {
@@ -85,7 +85,7 @@ export default {
             this.$store.dispatch(action.TEMPLATE_LIST, obj);
         },
         Back() {
-            this.$router.replace({
+            this.$router.push({
                 path: "/profile"
             });
         },

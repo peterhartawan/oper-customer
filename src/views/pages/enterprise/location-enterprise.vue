@@ -258,7 +258,7 @@ export default {
         },
         Cancel() {
             this.$store.dispatch(action.DATA_ID_CORP, this.enterprise.identerprise);
-            this.$router.replace({
+            this.$router.push({
                 path: "/detail-enterprise/" + this.enterprise.identerprise
             });
         },

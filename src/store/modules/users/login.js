@@ -19,7 +19,7 @@ const actions = {
     [action.SET_LOGOUT_TIMER]({commit}, expirationTime){
             setTimeout(()=> {
                 commit('setLogout');
-                router.replace('login')
+                router.push('login')
             }, expirationTime)    
     },
     async [action.LOGIN]({ commit, dispatch }, authData) {
@@ -56,7 +56,7 @@ const actions = {
             commit('setLogin', data.status);
             commit(mutation.BUTTON_STATUS, false)
             if (data.status){
-                router.replace('dashboard')
+                router.push('dashboard')
             }
             dispatch(action.SET_LOGOUT_TIMER, data.data.expires_in)
         }
@@ -89,7 +89,7 @@ const actions = {
         }
         commit(mutation.AUTH_USER, {token : token });
         commit('setLogin', tokenCon);
-        router.replace('dashboard')
+        router.push('dashboard')
     },
     async [action.LOGOUT]({commit, dispatch}){
         try {

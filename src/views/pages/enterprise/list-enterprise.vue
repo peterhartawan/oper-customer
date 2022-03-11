@@ -134,7 +134,7 @@ export default {
     },
     methods: {
         newCorp() {
-            this.$router.replace('new-enterprise')
+            this.$router.push('new-enterprise')
         },
         handlePageChange(page) {
             this.currentPage = page;
@@ -159,7 +159,7 @@ export default {
         },
         async getId(id) {
             await this.$store.dispatch(action.DATA_ID_CORP, id);
-            this.$router.replace({
+            this.$router.push({
                 path: '/detail-enterprise/' + id
             })
         },

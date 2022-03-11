@@ -312,7 +312,7 @@ export default {
             this.form.photoname = event.target.files[0].name
         },
         cancButton() {
-            this.$router.replace(`/detail-enterprise/${this.form.id}`)
+            this.$router.push(`/detail-enterprise/${this.form.id}`)
         },
         isNumber(evt) {
             evt = (evt) ? evt : window.event;

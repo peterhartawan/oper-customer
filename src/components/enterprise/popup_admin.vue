@@ -94,13 +94,13 @@ export default {
         },
         addButton() {
             this.$store.commit(mutation.BUTTON_STATUS, false)
-            router.replace(`/new-admin-enterprise/${this.enterprise.identerprise}`)
+            router.push(`/new-admin-enterprise/${this.enterprise.identerprise}`)
         },
         editAdmin(e) {
             this.$store.commit(mutation.BUTTON_STATUS, false)
             this.$store.commit(mutation.SET_DATA_ADMIN_ENTERPRISE, e);
             this.$store.commit(mutation.SET_ID_ENTERPRISE, this.enterprise.identerprise)
-            router.replace('/edit-admin')
+            router.push('/edit-admin')
         },
         indexMethod(index) {
             return index + this.paginato.fromP;

@@ -96,7 +96,7 @@
                 });
             },
             cancleButton(){
-                router.replace('pic-task-list')
+                router.push('pic-task-list')
             },
             isNumber(evt) {
                 evt = (evt) ? evt : window.event;

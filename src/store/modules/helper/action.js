@@ -20,7 +20,7 @@ export default {
                 data : data.data,
                 
             })
-            router.replace({ path: '/detail-pages/'+payload})
+            router.push({ path: '/detail-pages/'+payload})
             return data
             
         }
@@ -101,7 +101,7 @@ export default {
                     data : data.data,
                     
                 })
-                router.replace({ path: '/detail-pages/'+payload})
+                router.push({ path: '/detail-pages/'+payload})
                 return data
                 
             }
@@ -124,7 +124,7 @@ export default {
                 { headers: {'Authorization': 'Bearer '+token }
                 })
             dispatch(action.LIST_PAGES)
-            router.replace({ path: '/pages'})
+            router.push({ path: '/pages'})
             commit(mutation.BUTTON_STATUS, false)
         }catch(err){
             commit(mutation.BUTTON_STATUS, false)

@@ -258,7 +258,7 @@ export default {
 
         },
         Cancel() {
-            this.$router.replace("/employee");
+            this.$router.push("/employee");
         },
         onPickFile() {
             this.$refs.fileInput.click();

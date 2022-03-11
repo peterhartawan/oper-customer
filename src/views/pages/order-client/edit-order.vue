@@ -395,7 +395,7 @@
                 })
             },
             isCancel(){
-                this.$router.replace('/order/detail')
+                this.$router.push('/order/detail')
             },
             removeDomain(item){
                 let index = this.form.inspectors.indexOf(item);

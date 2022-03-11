@@ -98,7 +98,7 @@ export default {
                 }
             })
             commit(mutation.BUTTON_STATUS, false)
-            router.replace('/template-list')
+            router.push('/template-list')
 
         }catch(err){
             commit(mutation.BUTTON_STATUS, false)
@@ -162,7 +162,7 @@ export default {
             })
             commit(mutation.SET_ID_ENTERPRISE, payloads.identerprise);
             commit(mutation.BUTTON_STATUS, false);
-            router.replace('/template-list')
+            router.push('/template-list')
         }
         catch (err) {
             commit(mutation.BUTTON_STATUS, false);

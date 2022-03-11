@@ -254,7 +254,7 @@
         this.firstData()
       },
       newDispatcher()   {
-        this.$router.replace('new-dispatcher')
+        this.$router.push('new-dispatcher')
       },
       imgAlt(event) {
           event.target.src = require("../../assets/images/avatar-2.jpg");

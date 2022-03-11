@@ -148,7 +148,7 @@
                 });
             },
             Cancel() {
-                this.$router.replace({
+                this.$router.push({
                     path: "/detail-vendor/" + this.vendor.idvendor
                 });
             },

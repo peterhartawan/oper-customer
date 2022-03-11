@@ -280,7 +280,10 @@
                 this.spanDriver = 3;
                 this.spanMonth = 3
             }
-            this.sendForm();
+            if(this.listData == null)
+                this.sendForm();
+            if(this.paginato.curPage != null)
+                this.currentPage = this.paginato.curPage
         },
         methods: {
             headerRowStyle({row, column, rowIndex, columnIndex}) {
@@ -300,7 +303,7 @@
                 }
             },
             newCorp()   {
-                this.$router.replace('/order/create')
+                this.$router.push('/order/create')
             },
             async exportExcel(){
                 let data = '';
@@ -331,9 +334,9 @@
                 };
                 await this.$store.dispatch(action.ID_ORDER_CLIENT, obj);
                 if(this.changeTab === 'open'){
-                    this.$router.replace('/order/detail')
+                    this.$router.push('/order/detail')
                 }else {
-                    this.$router.replace('/detail-order')
+                    this.$router.push('/detail-order')
                 }
             },
             indexMethod(index) {

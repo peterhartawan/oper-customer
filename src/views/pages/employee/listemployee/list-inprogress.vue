@@ -203,7 +203,7 @@
                     path  : this.path
                 };
                 await this.$store.dispatch(action.EMPLOYEE_TASK_ID, obj);
-                this.$router.replace('/detail-task-employee')
+                this.$router.push('/detail-task-employee')
             },
             indexMethod(index) {
                 return index + this.paginate.fromP;

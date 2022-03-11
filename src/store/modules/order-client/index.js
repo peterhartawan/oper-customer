@@ -10,7 +10,8 @@ const state = {
         nextClick   : null,
         prevClick   : null,
         firstPage   : null,
-        fromP       : null
+        fromP       : null,
+        curPage     : null
     },
     order           : null,
     path            : null,

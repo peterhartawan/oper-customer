@@ -82,7 +82,7 @@ export default {
             this.$store.dispatch(action.LIST_DRIVER_ENTERPRISE, this.payload);
         },
         Back() {
-            this.$router.replace({
+            this.$router.push({
                 path: "/profile"
             });
         },

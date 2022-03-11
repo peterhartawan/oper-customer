@@ -113,7 +113,7 @@
         },
         methods: {
             newTemplate()   {
-                this.$router.replace('/new-template-task')
+                this.$router.push('/new-template-task')
                 this.$store.commit(mutation.SET_ID_ENTERPRISE, this.identer)
             },
             handlePageChange(page) {
@@ -148,14 +148,14 @@
                 return index + this.paginat.fromP;
             },
             handleEdit(e){
-                this.$router.replace('/edit-template-task')
+                this.$router.push('/edit-template-task')
                 this.$store.commit(mutation.SET_ID_ENTERPRISE, e)
             },
             onBackButton() {
                 if(this.buttonStatus){
-                    router.replace(`/detail-enterprise/${this.identer}`)
+                    router.push(`/detail-enterprise/${this.identer}`)
                 }else {
-                    router.replace(`/employee/inprogress`)
+                    router.push(`/employee/inprogress`)
                 }
             }
         }

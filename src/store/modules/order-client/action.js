@@ -28,7 +28,8 @@ export default {
                 prevC   : data.data.prev_page_url,
                 firstP  : data.data.first_page_url,
                 fromPA  : data.data.from,
-                totalPE : data.data.total
+                totalPE : data.data.total,
+                curPage : payload.page
             }
             commit(mutation.BUTTON_STATUS, false)
             commit(mutation.SET_L_ORDER_CLIET, objList )
@@ -66,7 +67,7 @@ export default {
                 })
             commit(mutation.BUTTON_STATUS, false)
             commit(mutation.SET_ORDER_CLIENT_DETAIL, data.data)
-            router.replace('/order/open')
+            router.push('/order/open')
         }catch(err){
             commit(mutation.BUTTON_STATUS, false)
             swal(err.response.data.message,'', 'error')
@@ -106,7 +107,7 @@ export default {
                 path  : '/order/open'
             }
             dispatch(action.ID_ORDER_CLIENT, obj)
-            router.replace('/order/detail')
+            router.push('/order/detail')
         }catch(err){
             commit(mutation.BUTTON_STATUS, false)
             swal(err.response.data.message,'', 'error')
@@ -141,7 +142,7 @@ export default {
                 { headers: {'Authorization': 'Bearer '+token}
                 })
             commit(mutation.BUTTON_STATUS, false)
-            router.replace('/order/inprogress')
+            router.push('/order/inprogress')
         }catch(err){
             commit(mutation.BUTTON_STATUS, false)
             swal(err.response.data.message,'', 'error')
@@ -216,7 +217,7 @@ export default {
                 })
             swal('Order Canceled','', 'success')
             commit(mutation.SET_LOADING, false);
-            router.replace('/order/inprogress')
+            router.push('/order/inprogress')
         }
         catch (err) {
             commit(mutation.SET_LOADING, false);

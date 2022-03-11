@@ -86,7 +86,7 @@ export default {
     },
     methods: {
         Back() {
-            router.replace("/driver");
+            router.push("/driver");
         },
         imgAlt(event) {
             event.target.src = this.alt;

@@ -200,7 +200,7 @@ export default {
             });
         },
         Cancel() {
-            this.$router.replace('/driver')
+            this.$router.push('/driver')
 
         },
         onPickFile() {

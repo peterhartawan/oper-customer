@@ -173,7 +173,7 @@ export default {
         },
         Cancel() {
             this.$store.dispatch(action.LIST_LOCATION, this.payload);
-            this.$router.replace({
+            this.$router.push({
                 path: "/location-enterprise/" + this.enterprise.identerprise
             });
         },

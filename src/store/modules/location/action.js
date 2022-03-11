@@ -55,7 +55,7 @@ async [action.CREATE_DATA_LOCATION]({commit, dispatch}, payload) {
             })
             commit(mutation.BUTTON_STATUS, false)
             dispatch(action.LIST_LOCATION, payload)
-        router.replace({ path: '/location-enterprise/' +payload.identerprise})
+        router.push({ path: '/location-enterprise/' +payload.identerprise})
     }catch(err){
         commit(mutation.BUTTON_STATUS, false)
         swal(err.response.data.message,'', 'error')
@@ -74,7 +74,7 @@ async [action.DETAIL_LOCATION]({commit, dispatch}, payload) {
                 
             })
             commit(mutation.BUTTON_STATUS, false)
-            router.replace({ path: '/edit-location-enterprise/'+payload})
+            router.push({ path: '/edit-location-enterprise/'+payload})
             return data
             
         }
@@ -100,7 +100,7 @@ async [action.UPDATE_DATA_LOCATION]({commit, dispatch}, payload) {
             })
         dispatch(action.LIST_LOCATION, payload)
         commit(mutation.BUTTON_STATUS, false)
-        router.replace({ path: '/location-enterprise/'+payload})
+        router.push({ path: '/location-enterprise/'+payload})
     }catch(err){
         commit(mutation.BUTTON_STATUS, false)
         swal(err.response.data.message,'', 'error')
