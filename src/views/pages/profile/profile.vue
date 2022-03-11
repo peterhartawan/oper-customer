@@ -142,13 +142,13 @@ export default {
         },
         async location() {
             this.$store.dispatch(action.LIST_LOCATION, this.payload);
-            this.$router.replace({
+            this.$router.push({
                 path: "/profile-location-enterprise/" + this.profile.enterprise.identerprise
             });
         },
         async templateTask() {
             this.$store.commit(mutation.SET_ID_ENTERPRISE, this.profile.enterprise.identerprise)
-            this.$router.replace({
+            this.$router.push({
                 path: "/profile-template-list/" + this.profile.enterprise.identerprise
             });
 

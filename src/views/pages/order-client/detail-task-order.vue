@@ -128,7 +128,7 @@
                 this.$store.dispatch(action.SEARCH_DISPATCHER, this.form.search)
             },
             backButton() {
-                this.$router.replace('/detail-order')
+                this.$router.push('/detail-order')
             },
             async getId(id){
                 this.dialogVisible = true

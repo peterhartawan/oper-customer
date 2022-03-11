@@ -12,6 +12,7 @@ export default {
         state.paginate.firstPage    = payload.firstP
         state.paginate.fromP        = payload.fromPA
         state.paginate.totalP       = payload.totalPE
+        state.paginate.curPage      = payload.curPage
     },
     /*
     * create enterprise to detail enterprise

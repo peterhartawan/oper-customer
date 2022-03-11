@@ -31,7 +31,7 @@ export default {
                 data: data.data,
             }
             commit(mutation.SET_DATA_PROFILE, objList)
-            router.replace({ path: '/edit-profile' })
+            router.push({ path: '/edit-profile' })
 
         } catch (err) {
             dispatch(action.DATA_ERROR, err)
@@ -54,7 +54,7 @@ export default {
                 })
             commit(mutation.BUTTON_STATUS, false)
             dispatch(action.DATA_PROFILE)
-            router.replace({ path: '/profile' })
+            router.push({ path: '/profile' })
             swal(
                 'Succes!',
                 'If you change your email, please check your email',

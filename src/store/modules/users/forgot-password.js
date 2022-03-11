@@ -48,7 +48,7 @@ const actions = {
                 );
                 commit(mutation.BUTTON_STATUS, false)
                 setTimeout(() => {
-                    router.replace('/login')
+                    router.push('/login')
                 }, 2000)
             }
         }
@@ -81,7 +81,7 @@ const actions = {
                 localStorage.clear()
                 // dispatch('setError', null);
                 setTimeout(() => {
-                    router.replace('/login')
+                    router.push('/login')
                 }, 2000)
             }
         }

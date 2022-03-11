@@ -221,7 +221,7 @@
         },
         methods: {
             // newCorp()   {
-            //     this.$router.replace('/order/create')
+            //     this.$router.push('/order/create')
             // },
             // exportExcel(){
             //     if(this.form.month === '' || this.form.month === '0' ){
@@ -250,10 +250,10 @@
                 this.$store.dispatch( action.LIST_ORDER_CLIENT, this.input.trim() )
             },
             templateButton(){
-                this.$router.replace('/template-list')
+                this.$router.push('/template-list')
             },
             assignButton(){
-                this.$router.replace('/employee/assign-task')
+                this.$router.push('/employee/assign-task')
             },
            async getId(id){
                 let obj = {
@@ -261,7 +261,7 @@
                     path  : '/employee/task/complete'
                 };
                await this.$store.dispatch(action.EMPLOYEE_TASK_ID, obj)
-                this.$router.replace('/detail-task-employee')
+                this.$router.push('/detail-task-employee')
             },
             indexMethod(index) {
                 return index + this.paginate.fromP;

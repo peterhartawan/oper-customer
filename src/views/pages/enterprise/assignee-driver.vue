@@ -103,7 +103,7 @@ export default {
             this.$store.dispatch(action.ASSIGN_DRIVER, this.form);
         },
         Back() {
-            this.$router.replace({
+            this.$router.push({
                 path: "/list-driver-enterprise/" + this.enterprise.identerprise
             });
         },

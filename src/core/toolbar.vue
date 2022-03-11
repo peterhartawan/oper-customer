@@ -118,7 +118,7 @@ export default {
     // },
     goProfile() {
       this.$store.dispatch(action.DATA_PROFILE);
-      this.$router.replace({
+      this.$router.push({
         path: "/profile/"
       });
     },
@@ -145,7 +145,7 @@ export default {
     },
     async inList(){
       await this.$store.dispatch(action.MARK_AS_READ);
-      this.$router.replace('/order/open')
+      this.$router.push('/order/open')
     }
   },
   computed: {

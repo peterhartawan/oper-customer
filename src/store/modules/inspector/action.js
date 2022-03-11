@@ -47,7 +47,7 @@ export default {
                 identerpriseS   : data.data.client_enterprise_identerprise
             }
             dispatch(action.PICTASK_LIST, obj)
-            router.replace('/pic-task-list')
+            router.push('/pic-task-list')
             commit(mutation.BUTTON_STATUS, false)
         }catch(err){
             commit(mutation.BUTTON_STATUS, false)
@@ -70,7 +70,7 @@ export default {
                 }
             })
             commit(mutation.BUTTON_STATUS, false)
-            router.replace('/pic-task-list')
+            router.push('/pic-task-list')
         }
         catch (err) {
             commit(mutation.BUTTON_STATUS, false)

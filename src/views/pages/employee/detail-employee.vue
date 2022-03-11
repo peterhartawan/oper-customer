@@ -175,7 +175,7 @@ export default {
             this.type("task?idorder=");
             this.id(this.employee.id);
             this.pathType(this.$route.path);
-            router.replace("/order/tracking");
+            router.push("/order/tracking");
         },
         async suspendButton() {
             const {
@@ -208,7 +208,7 @@ export default {
             });
         },
         backButton() {
-            router.replace("/employee");
+            router.push("/employee");
         },
         imgAlt(event) {
             event.target.src = this.alt;

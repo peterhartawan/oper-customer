@@ -92,7 +92,7 @@ const actions = {
                 commit(mutation.CLEAR_AUTH_DATA);
                 commit(mutation.CLEAR_NOTIF);
                 localStorage.clear();
-                router.replace('/login')
+                router.push('/login')
             }
         }
     }

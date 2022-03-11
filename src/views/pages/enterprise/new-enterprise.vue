@@ -403,7 +403,7 @@
                 })
             },
             isCancel()  {
-                this.$router.replace('enterprise')
+                this.$router.push('enterprise')
             },
             removeDomain(item){
                 let index = this.form.inspectors.indexOf(item);

@@ -73,12 +73,12 @@ export default {
                 { headers: {'Authorization': 'Bearer '+token }
                 })
             commit(mutation.BUTTON_STATUS, false);
-            router.replace('/dispatcher');
+            router.push('/dispatcher');
             // commit(mutation.SET_ENTERPRISE_RES, {
             //     enterpriseC : data.data,
             //     adminEnter  : data.data.admins[0]
             // })
-            // router.replace({ path: '/detail-enterprise/'+ data.data.identerprise })
+            // router.push({ path: '/detail-enterprise/'+ data.data.identerprise })
             // 'Content-Type': 'multipart/form-data'
         }catch(err){
             commit(mutation.BUTTON_STATUS, false)
@@ -121,7 +121,7 @@ export default {
             });
             commit(mutation.SET_DISPATCHER_RES, data.data)
             commit(mutation.BUTTON_STATUS, false)
-            router.replace('detail-dispatcher')
+            router.push('detail-dispatcher')
         }
         catch (err) {
             commit(mutation.BUTTON_STATUS, false)
@@ -145,7 +145,7 @@ export default {
                 dispatch(action.LIST_DISPATCHER, obj);
                 commit(mutation.SET_BUTTON_DELETE, false);
                 commit(mutation.BUTTON_STATUS, false);
-                router.replace('/dispatcher')
+                router.push('/dispatcher')
         }catch (err) {
             commit(mutation.SET_BUTTON_DELETE, false);
             commit(mutation.BUTTON_STATUS, false);
@@ -182,7 +182,7 @@ export default {
                 jsonData, { headers: {  'Authorization': 'Bearer '+token}
             })
             dispatch(action.DATA_ID_CORP, payload.identerprise)
-            // router.replace({ path: '/detail-enterprise/'+ payload.identerprise })
+            // router.push({ path: '/detail-enterprise/'+ payload.identerprise })
         }catch (err) {
             swal(err.response.data.message,'', 'error')
             dispatch(action.DATA_ERROR, err)
@@ -207,7 +207,7 @@ export default {
                 commit(mutation.SET_BUTTON_SUSPEND, false);
                 commit(mutation.BUTTON_STATUS, false);
                 dispatch(action.LIST_DISPATCHER, obj);
-            router.replace({ path: '/dispatcher'})
+            router.push({ path: '/dispatcher'})
         }catch(err){
             commit(mutation.SET_BUTTON_SUSPEND, false);
             commit(mutation.BUTTON_STATUS, false)
@@ -234,7 +234,7 @@ export default {
             commit(mutation.BUTTON_STATUS, false);
             commit(mutation.SET_BUTTON_ACTIVE, false);
             dispatch(action.LIST_DISPATCHER, obj);
-            router.replace({ path: '/dispatcher'})
+            router.push({ path: '/dispatcher'})
         }catch(err){
             commit(mutation.SET_BUTTON_ACTIVE, false);
             commit(mutation.BUTTON_STATUS, false);

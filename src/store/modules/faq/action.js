@@ -79,7 +79,7 @@ export default {
                 })
             commit(mutation.BUTTON_STATUS, false)
             dispatch(action.LIST_FAQ, payload)
-            router.replace({ path: '/manage-faq' })
+            router.push({ path: '/manage-faq' })
         } catch (err) {
             commit(mutation.BUTTON_STATUS, false)
             swal(err.response.data.message, '', 'error')
@@ -98,7 +98,7 @@ export default {
                 data: data.data,
 
             })
-            router.replace({ path: '/manage-faq/' + payload })
+            router.push({ path: '/manage-faq/' + payload })
             return data
 
         }
@@ -123,7 +123,7 @@ export default {
                 })
             commit(mutation.BUTTON_STATUS, false)
             dispatch(action.LIST_FAQ, payload)
-            router.replace({ path: '/manage-faq' })
+            router.push({ path: '/manage-faq' })
         } catch (err) {
             commit(mutation.BUTTON_STATUS, false)
             swal(err.response.data.message, '', 'error')
@@ -143,7 +143,7 @@ export default {
                 idrole: payload.idrole
             });
             dispatch(action.LIST_FAQ, foo)
-            router.replace('/manage-faq')
+            router.push('/manage-faq')
         } catch (err) {
 
         }

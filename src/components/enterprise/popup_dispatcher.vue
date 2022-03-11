@@ -136,7 +136,7 @@ export default {
                 }
             })
             // this.$store.dispatch(action.DATA_ID_CORP, id.identerprise)
-            // this.$router.replace({ path: '/detail-enterprise/'+ id.identerprise })
+            // this.$router.push({ path: '/detail-enterprise/'+ id.identerprise })
         },
     },
 };

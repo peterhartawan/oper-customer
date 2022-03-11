@@ -134,7 +134,7 @@ export default {
                     { headers: {'Authorization': 'Bearer '+token, 'Content-Type': 'multipart/form-data'}
                     })
                     commit(mutation.BUTTON_STATUS, false)
-                    router.replace({ path: '/employee'})
+                    router.push({ path: '/employee'})
             }catch(err){
                 commit(mutation.BUTTON_STATUS, false)
                 swal(err.response.data.message,'', 'error')
@@ -152,7 +152,7 @@ export default {
                         data : data.data,
 
                     })
-                    // router.replace({ path: '/employee/'+payload})
+                    // router.push({ path: '/employee/'+payload})
                     return data.data
 
                 }
@@ -186,7 +186,7 @@ export default {
                     { headers: {'Authorization': 'Bearer '+token, 'Content-Type': 'multipart/form-data'}
                     })
                     commit(mutation.BUTTON_STATUS, false)
-                    router.replace({ path: '/employee'})
+                    router.push({ path: '/employee'})
             }catch(err){
                 commit(mutation.BUTTON_STATUS, false)
                 swal(err.response.data.message,'', 'error')
@@ -231,7 +231,7 @@ export default {
                     })
                     commit(mutation.BUTTON_STATUS, false)
                     dispatch(action.LIST_POSITION, 1 )
-                    router.replace({ path: '/employee/list-position'})
+                    router.push({ path: '/employee/list-position'})
             }catch(err){
                 commit(mutation.BUTTON_STATUS, false)
                 swal(err.response.data.message,'', 'error')
@@ -250,7 +250,7 @@ export default {
                     })
                     commit(mutation.BUTTON_STATUS, false)
                     dispatch(action.LIST_POSITION, 1 )
-                    router.replace({ path: '/employee/list-position'})
+                    router.push({ path: '/employee/list-position'})
             }catch(err){
                 commit(mutation.BUTTON_STATUS, false)
                 swal(err.response.data.message,'', 'error')
@@ -270,7 +270,7 @@ export default {
                     data : data.data,
 
                 })
-                router.replace({ path: '/employee/list-position/'+payload})
+                router.push({ path: '/employee/list-position/'+payload})
                 return data.data
 
             }
@@ -292,7 +292,7 @@ export default {
                         { headers: {'Authorization': 'Bearer '+token }
                         })
                         dispatch(action.LIST_POSITION, 1 )
-                        router.replace({ path: '/employee/list-position'});
+                        router.push({ path: '/employee/list-position'});
                         commit(mutation.BUTTON_STATUS, false)
                 }catch(err){
                     commit(mutation.BUTTON_STATUS, false)
@@ -311,7 +311,7 @@ export default {
                         { headers: {'Authorization': 'Bearer '+token }
                         })
                         dispatch(action.LIST_POSITION, 1 )
-                        router.replace({ path: '/employee/list-position'});
+                        router.push({ path: '/employee/list-position'});
                         commit(mutation.BUTTON_STATUS, false)
                 }catch(err){
                     commit(mutation.BUTTON_STATUS, false)
@@ -330,7 +330,7 @@ export default {
                     })
                     commit(mutation.BUTTON_STATUS, false)
                     dispatch(action.LIST_POSITION, 1 )
-                    router.replace({ path: '/employee/list-position'});
+                    router.push({ path: '/employee/list-position'});
             }catch (err) {
                 commit(mutation.BUTTON_STATUS, false)
                 swal(err.response.data.message,'', 'error')
@@ -355,7 +355,7 @@ export default {
                     commit(mutation.BUTTON_STATUS, false)
                     commit(mutation.CLEAR_INPUT, true)
                     swal('Succes To Assign Task','', 'success')
-                    router.replace('/employee/assign-task')
+                    router.push('/employee/assign-task')
             }catch(err){
                 commit(mutation.BUTTON_STATUS, false)
                 swal(err.response.data.message,'', 'error')
@@ -374,7 +374,7 @@ export default {
                     { headers: {'Authorization': 'Bearer '+token }
                     })
                 dispatch(action.LIST_EMPLOYEE, {status: 1, page: 1})
-                router.replace({ path: '/employee'})
+                router.push({ path: '/employee'})
                 commit(mutation.BUTTON_STATUS, false)
                 dispatch(action.ACCOUNT_EMPLOYEE);
                 dispatch(action.GRAFIK_DASHBOARD);
@@ -396,7 +396,7 @@ export default {
                     })
                     // console.log('data disini :', data)
                     dispatch(action.LIST_EMPLOYEE, {status: 3, page: 1})
-                    router.replace({ path: '/employee'});
+                    router.push({ path: '/employee'});
                     commit(mutation.SET_BUTTON_ACTIVE, false);
                     commit(mutation.BUTTON_STATUS, false)
                     dispatch(action.ACCOUNT_EMPLOYEE);
@@ -419,7 +419,7 @@ export default {
                     dispatch(action.LIST_EMPLOYEE, {status: 3, page: 1});
                     commit(mutation.SET_BUTTON_DELETE, false);
                     commit(mutation.BUTTON_STATUS, false);
-                    router.replace('/employee');
+                    router.push('/employee');
                     dispatch(action.TOTAL_ACCOUNT_DRIVER);
                     dispatch(action.GRAFIK_DASHBOARD);
             }catch (err) {
@@ -443,7 +443,7 @@ export default {
                         });
                 swal('Task Canceled','', 'success');
                 commit(mutation.SET_LOADING, false);
-                router.replace('/employee/inprogress')
+                router.push('/employee/inprogress')
             }
             catch (err) {
                 commit(mutation.SET_LOADING, false);

@@ -172,7 +172,7 @@
              this.dropDown = this.employeeList;
             },
             isCancel(){
-                this.$router.replace(`/employee/inprogress`)
+                this.$router.push(`/employee/inprogress`)
             },
             taskT(value){
                 this.$store.dispatch(action.TEMPLATE_ID, value)

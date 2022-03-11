@@ -79,7 +79,7 @@ export default {
         },
 
         Back() {
-            this.$router.replace({
+            this.$router.push({
                 path: "/profile"
             });
         },

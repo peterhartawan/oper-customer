@@ -201,10 +201,10 @@
                 this.infowindow.name = position.name;
             },
             templateButton(){
-                this.$router.replace('/template-list')
+                this.$router.push('/template-list')
             },
             assignButton(){
-                this.$router.replace('/employee/assign-task')
+                this.$router.push('/employee/assign-task')
             },
         }
 

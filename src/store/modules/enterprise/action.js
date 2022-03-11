@@ -74,7 +74,7 @@ export default {
                 adminEnter: data.data.admins
             })
             commit(mutation.BUTTON_STATUS, false)
-            router.replace({ path: '/detail-enterprise/' + data.data.identerprise })
+            router.push({ path: '/detail-enterprise/' + data.data.identerprise })
 
         } catch (err) {
             commit(mutation.BUTTON_STATUS, false)
@@ -133,7 +133,7 @@ export default {
                 adminEnter: data.data.admins
             })
             commit(mutation.BUTTON_STATUS, false)
-            router.replace({ path: '/detail-enterprise/' + data.data.identerprise })
+            router.push({ path: '/detail-enterprise/' + data.data.identerprise })
         }
         catch (err) {
             commit(mutation.BUTTON_STATUS, false)
@@ -149,7 +149,7 @@ export default {
                     'Authorization': 'Bearer ' + token
                 }
             })
-            router.replace('/enterprise')
+            router.push('/enterprise')
         } catch (err) {
 
         }
@@ -170,7 +170,7 @@ export default {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
             dispatch(action.DATA_ID_CORP, payload.identerprise)
-            router.replace({ path: '/detail-enterprise/' + payload.identerprise })
+            router.push({ path: '/detail-enterprise/' + payload.identerprise })
             commit(mutation.SET_LOADING, false);
             swal.fire(
                 'Successfully created new admin!',
@@ -198,7 +198,7 @@ export default {
                 })
             dispatch(action.DATA_ID_CORP, payload.identer)
             commit(mutation.BUTTON_STATUS, false)
-            router.replace({ path: '/detail-enterprise/' + payload.identer })
+            router.push({ path: '/detail-enterprise/' + payload.identer })
             swal.fire(
                 data.message,
                 '',
@@ -225,7 +225,7 @@ export default {
                 })
                 commit(mutation.BUTTON_STATUS, false)
             dispatch(action.LIST_DATA_COR)
-            router.replace({ path: '/enterprise' })
+            router.push({ path: '/enterprise' })
 
         } catch (err) {
             commit(mutation.BUTTON_STATUS, false)
@@ -247,7 +247,7 @@ export default {
                 })
             dispatch(action.LIST_DATA_COR)
             commit(mutation.BUTTON_STATUS, false)
-            router.replace({ path: '/enterprise' })
+            router.push({ path: '/enterprise' })
 
         } catch (err) {
             commit(mutation.BUTTON_STATUS, false)
@@ -271,7 +271,7 @@ export default {
                 '',
                 'success')
             dispatch(action.DATA_ID_CORP, payload.identerprise)
-            router.replace({ path: '/detail-enterprise/' + payload.identerprise })
+            router.push({ path: '/detail-enterprise/' + payload.identerprise })
             commit(mutation.BUTTON_STATUS, false)
         } catch (err) {
             commit(mutation.BUTTON_STATUS, false)
@@ -296,7 +296,7 @@ export default {
                 '',
                 'success')
             dispatch(action.DATA_ID_CORP, payload.identerprise)
-            router.replace({ path: '/detail-enterprise/' + payload.identerprise })
+            router.push({ path: '/detail-enterprise/' + payload.identerprise })
             commit(mutation.BUTTON_STATUS, false)
         } catch (err) {
             commit(mutation.BUTTON_STATUS, false)
@@ -313,7 +313,7 @@ export default {
                 })
             commit(mutation.BUTTON_STATUS, false)
             dispatch(action.DATA_ID_CORP, payload.identerprise)
-            router.replace({ path: '/detail-enterprise/' + payload.identerprise })
+            router.push({ path: '/detail-enterprise/' + payload.identerprise })
             swal.fire(
                 'Success!',
                 '',

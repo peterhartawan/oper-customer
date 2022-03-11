@@ -90,7 +90,7 @@ export default {
                 page: 1,
                 status: this.status
             });
-            this.$router.replace({
+            this.$router.push({
                 path: "/employee/list-position"
             });
         }

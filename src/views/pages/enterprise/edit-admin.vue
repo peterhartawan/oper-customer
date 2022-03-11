@@ -197,7 +197,7 @@ export default {
             }
         },
         Cancel() {
-            router.replace(`/detail-enterprise/${this.identer}`)
+            router.push(`/detail-enterprise/${this.identer}`)
         }
     },
     computed: {

@@ -477,7 +477,7 @@ export default {
       this.firstData();
     },
     Back() {
-      this.$router.replace({
+      this.$router.push({
         path: "/detail-enterprise/" + this.enterprise.identerprise,
       });
     },

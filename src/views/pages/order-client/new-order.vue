@@ -465,7 +465,7 @@ export default {
       });
     },
     isCancel() {
-      this.$router.replace("/order/open");
+      this.$router.push("/order/open");
     },
     removeDomain(item) {
       let index = this.form.inspectors.indexOf(item);

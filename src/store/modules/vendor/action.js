@@ -66,7 +66,7 @@ export default {
 
             })
             commit(mutation.BUTTON_STATUS, false)
-            router.replace({ path: '/vendor' })
+            router.push({ path: '/vendor' })
         } catch (err) {
             commit(mutation.BUTTON_STATUS, false)
             swal(err.response.data.message, '', 'error')
@@ -97,7 +97,7 @@ export default {
 
             })
             dispatch(action.DATA_ID_VENDOR, payload.idvendor)
-            router.replace({ path: '/detail-vendor/' + payload.idvendor })
+            router.push({ path: '/detail-vendor/' + payload.idvendor })
             commit(mutation.BUTTON_STATUS, false)
         } catch (err) {
             commit(mutation.BUTTON_STATUS, false)
@@ -125,7 +125,7 @@ export default {
                     'success')
                 commit(mutation.BUTTON_STATUS, false)
                 dispatch(action.DATA_ID_VENDOR, payload.idvendor)
-                router.replace({ path: '/detail-vendor/' + payload.idvendor })
+                router.push({ path: '/detail-vendor/' + payload.idvendor })
         } catch (err) {
             commit(mutation.BUTTON_STATUS, false)
             swal(err.response.data.message, '', 'error')
@@ -148,7 +148,7 @@ export default {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
             dispatch(action.DATA_ID_VENDOR, payload.idvendor)
-            router.replace({ path: '/detail-vendor/' + payload.idvendor })
+            router.push({ path: '/detail-vendor/' + payload.idvendor })
             commit(mutation.SET_LOADING, false);
         } catch (err) {
             commit(mutation.SET_LOADING, false);
@@ -187,7 +187,7 @@ export default {
                 }
             })
             commit(mutation.BUTTON_STATUS, false)
-            router.replace('/vendor')
+            router.push('/vendor')
         } catch (err) {
             commit(mutation.BUTTON_STATUS, false)
             swal(err.response.data.message, '', 'error')
@@ -225,7 +225,7 @@ export default {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
             dispatch(action.LIST_DATA_VEN)
-            router.replace({ path: '/vendor' })
+            router.push({ path: '/vendor' })
             commit(mutation.BUTTON_STATUS, false)
         } catch (err) {
             commit(mutation.BUTTON_STATUS, false)
@@ -247,7 +247,7 @@ export default {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
             dispatch(action.LIST_DATA_VEN)
-            router.replace({ path: '/vendor' })
+            router.push({ path: '/vendor' })
             commit(mutation.BUTTON_STATUS, false)
         } catch (err) {
             commit(mutation.BUTTON_STATUS, false)
@@ -271,7 +271,7 @@ export default {
                     '',
                     'success')
             dispatch(action.DATA_ID_VENDOR, payload.idvendor)
-            router.replace({ path: '/detail-vendor/' + payload.idvendor })
+            router.push({ path: '/detail-vendor/' + payload.idvendor })
             commit(mutation.BUTTON_STATUS, false)
         } catch (err) {
             commit(mutation.BUTTON_STATUS, false)
@@ -296,7 +296,7 @@ export default {
                     '',
                     'success')
             dispatch(action.DATA_ID_VENDOR, payload.idvendor)
-            router.replace({ path: '/detail-vendor/' + payload.idvendor })
+            router.push({ path: '/detail-vendor/' + payload.idvendor })
             commit(mutation.BUTTON_STATUS, false)
         } catch (err) {
             commit(mutation.BUTTON_STATUS, false)
@@ -313,7 +313,7 @@ export default {
                 })
                 commit(mutation.BUTTON_STATUS, false)
                 dispatch(action.DATA_ID_VENDOR, payload.idvendor)
-                router.replace({ path: '/detail-vendor/' + payload.idvendor })
+                router.push({ path: '/detail-vendor/' + payload.idvendor })
                 swal.fire(
                     'Success!',
                     '',

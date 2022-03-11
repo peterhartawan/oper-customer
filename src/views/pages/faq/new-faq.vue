@@ -125,7 +125,7 @@ export default {
             });
         },
         Cancel() {
-            this.$router.replace({
+            this.$router.push({
                 path: "/faq"
             });
         }

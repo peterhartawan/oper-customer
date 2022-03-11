@@ -18,7 +18,7 @@ export default {
                 forDriver : data.data,
                 
             })
-            router.replace({ path: '/detail-driver/'+payload})
+            router.push({ path: '/detail-driver/'+payload})
             return data.data
         }
         catch (err) {
@@ -36,7 +36,7 @@ export default {
                 forDriver : data.data,
                 
             })
-            router.replace({ path: '/edit-driver/'+payload})
+            router.push({ path: '/edit-driver/'+payload})
             return data.data
         }
         catch (err) {
@@ -54,7 +54,7 @@ export default {
                 forDriver : data.data,
                 
             })
-            router.replace({ path: '/edit-driver-enterprise/'+payload})
+            router.push({ path: '/edit-driver-enterprise/'+payload})
             return data.data
         }
         catch (err) {
@@ -136,7 +136,7 @@ export default {
                 { headers: {'Authorization': 'Bearer '+token, 'Content-Type': 'multipart/form-data'}
                 })
                 commit(mutation.BUTTON_STATUS, false)
-                router.replace({ path: '/driver'})
+                router.push({ path: '/driver'})
         }catch(err){
             commit(mutation.BUTTON_STATUS, false)
             swal(err.response.data.message,'', 'error')
@@ -171,7 +171,7 @@ export default {
                 { headers: {'Authorization': 'Bearer '+token, 'Content-Type': 'multipart/form-data'}
                 })
                 commit(mutation.BUTTON_STATUS, false)
-                router.replace({ path: '/driver'})
+                router.push({ path: '/driver'})
         }catch(err){
             commit(mutation.BUTTON_STATUS, false)
             swal(err.response.data.message,'', 'error')
@@ -254,7 +254,7 @@ export default {
                 })
                 commit(mutation.BUTTON_STATUS, false)
                 dispatch(action.LIST_DRIVER_ENTERPRISE,{page: payload.page, identerprise: payload.identerprise})
-                router.replace('/list-driver-enterprise/'+payload.identerprise)
+                router.push('/list-driver-enterprise/'+payload.identerprise)
         }catch(err){
             commit(mutation.BUTTON_STATUS, false)
             swal("You need at least 1 driver to assign")
@@ -288,7 +288,7 @@ export default {
                 }
             dispatch(action.TOTAL_ACCOUNT_DRIVER);
             dispatch(action.GRAFIK_DASHBOARD);
-                // router.replace({ path: '/driver'})
+                // router.push({ path: '/driver'})
         }catch(err){
             commit(mutation.BUTTON_STATUS, false);
             commit(mutation.SET_BUTTON_SUSPEND, false);
@@ -317,7 +317,7 @@ export default {
                         page    : 1,
                         q       : '',
                         status  : 3});
-                        router.replace({ path: '/driver'})
+                        router.push({ path: '/driver'})
                 }
             commit(mutation.SET_BUTTON_ACTIVE, false);
             dispatch(action.TOTAL_ACCOUNT_DRIVER);
@@ -345,7 +345,7 @@ export default {
                     identerprise: payload.identerprise,
                     status  : 3});
                 }else{
-                    router.replace('/driver')
+                    router.push('/driver')
                 }
             commit(mutation.SET_BUTTON_DELETE, false);
             dispatch(action.TOTAL_ACCOUNT_DRIVER);
@@ -432,7 +432,7 @@ export default {
                 { headers: {'Authorization': 'Bearer '+token, 'Content-Type': 'multipart/form-data'}
                 })
                 commit(mutation.BUTTON_STATUS, false)
-                router.replace({ path: '/driver/request-list'})
+                router.push({ path: '/driver/request-list'})
         }catch(err){
             commit(mutation.BUTTON_STATUS, false)
             swal(err.response.data.message,'', 'error')

@@ -260,7 +260,7 @@ export default {
         },
         async isCancel() {
             await this.$store.commit(mutation.SET_ID_ENTERPRISE, this.form.identerprise);
-            router.replace('/template-list')
+            router.push('/template-list')
         },
         removeDomain(item) {
             let index = this.form.tasks.indexOf(item);

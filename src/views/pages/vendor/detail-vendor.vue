@@ -138,20 +138,20 @@ export default {
     },
     methods: {
         Cancel() {
-            this.$router.replace({
+            this.$router.push({
                 name: "IndexVendor"
             });
         },
         editVendor() {
             this.$store.commit(mutation.BUTTON_STATUS, false)
             this.$store.dispatch(action.DATA_ID_VENDOR, this.vendor.idvendor);
-            this.$router.replace({
+            this.$router.push({
                 path: "/edit-vendor/" + this.vendor.idvendor
             });
         },
         addButton() {
             this.$store.commit(mutation.BUTTON_STATUS, false)
-            router.replace(`/new-admin-vendor/${this.vendor.idvendor}`)
+            router.push(`/new-admin-vendor/${this.vendor.idvendor}`)
         },
         resendActivation() {
             let obj = {
@@ -165,7 +165,7 @@ export default {
             this.$store.commit(mutation.BUTTON_STATUS, false)
             this.$store.commit(mutation.SET_DATA_ADMIN_VEND, e);
             this.$store.dispatch(action.DATA_ID_VENDOR, this.vendor.idvendor);
-            this.$router.replace({
+            this.$router.push({
                 path: "/edit-admin-vendor/" + this.vendor.idvendor
             });
         },

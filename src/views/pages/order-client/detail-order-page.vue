@@ -221,7 +221,7 @@
         methods:    {
             edit(){
                 this.$store.commit(mutation.ID_ORDER, this.order.idorder)
-                router.replace('/edit-order')
+                router.push('/edit-order')
             },
             // async remoteMethod2(query) {
             //     let trimName = query.trim()
@@ -245,7 +245,7 @@
             enterpriseDriver(){
             },
             backLCorp(){
-                router.replace('/order/open')
+                router.push('/order/open')
             },
             buttonSearch() {
             },

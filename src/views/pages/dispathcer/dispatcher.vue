@@ -74,7 +74,7 @@
     //         },
         methods: {
             newCorp()   {
-                this.$router.replace('new-dispatcher')
+                this.$router.push('new-dispatcher')
             },
             handlePageChange(page) {
                 this.currentPage = page
@@ -91,7 +91,7 @@
             },
             async getId(id){
                 await this.$store.dispatch(action.DATA_ID_DISPATCHER, id.id)
-                this.$router.replace({ path: '/detail-dispatcher' })
+                this.$router.push({ path: '/detail-dispatcher' })
             },
             indexMethod(index) {
                 return index + this.paginato.fromP;

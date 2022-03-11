@@ -101,7 +101,7 @@ export default {
       this.$store.dispatch(action.UPDATE_PROFILE_ADMIN, this.form);
     },
     Cancel() {
-      this.$router.replace({
+      this.$router.push({
         path: "/profile/"
       });
     },

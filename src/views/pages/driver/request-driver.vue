@@ -207,7 +207,7 @@ export default {
       });
     },
     isCancel() {
-      this.$router.replace("/driver/request-list");
+      this.$router.push("/driver/request-list");
     },
     isNumber(evt) {
       evt = evt ? evt : window.event;

@@ -285,8 +285,11 @@
                 end_date        : end
             };
 
-            this.$store.commit(mutation.BUTTON_STATUS, true);
-            let data = await this.$store.dispatch(action.LIST_ORDER_CLIENT, obj)
+            if(this.listData == null)
+                this.$store.commit(mutation.BUTTON_STATUS, true);
+                await this.$store.dispatch(action.LIST_ORDER_CLIENT, obj)
+            if(this.paginato.curPage != null)
+                this.currentPage = this.paginato.curPage
         },
         methods: {
             headerRowStyle({row, column, rowIndex, columnIndex}) {
@@ -306,7 +309,7 @@
                 }
             },
             newCorp()   {
-                this.$router.replace('/order/create')
+                this.$router.push('/order/create')
             },
             async exportExcel(){
                 let data = '';
@@ -356,7 +359,7 @@
                     path  : this.$route.path
                 };
                 await this.$store.dispatch(action.ID_ORDER_CLIENT, obj)
-                this.$router.replace('/detail-order')
+                this.$router.push('/detail-order')
             },
             indexMethod(index) {
                 return index + this.paginato.fromP;
@@ -384,7 +387,7 @@
                 this.$store.dispatch(action.LIST_ORDER_CLIENT, obj)
             },
             tabChange(v) {
-                this.$router.replace(v)
+                this.$router.push(v)
             },
             imgAlt(event) {
                 event.target.src = require("../../../assets/images/avatar-2.jpg");

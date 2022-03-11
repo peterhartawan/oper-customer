@@ -128,7 +128,7 @@
             }),
 
             newCorp()   {
-                this.$router.replace('/new-pic')
+                this.$router.push('/new-pic')
                 this.$store.commit(mutation.SET_ID_ENTERPRISE, this.identer)
             },
             handlePageChange(page) {
@@ -158,7 +158,7 @@
                 }).then((result) => {
                     if (result.value) {
                         this.$store.dispatch(action.DELETE_INSPECTOR, obj)
-                        // router.replace('/pic-task-list')
+                        // router.push('/pic-task-list')
                         // this.$store.dispatch(action.PICTASK_LIST, this.currentPage)
 
                     }
@@ -170,10 +170,10 @@
             async handleEdit(e){
                 await this.setIdEnt(this.identer)
                 await this.idInspec(e)
-                this.$router.replace('/edit-inspector')
+                this.$router.push('/edit-inspector')
             },
             onBackButton() {
-                router.replace(`/detail-enterprise/${this.identer}`)
+                router.push(`/detail-enterprise/${this.identer}`)
             }
         }
     }

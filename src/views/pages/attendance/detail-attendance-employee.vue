@@ -113,7 +113,7 @@ export default {
       pathType : mutation.SET_PATH
     }),
     back() {
-      router.replace("/attendance/employee");
+      router.push("/attendance/employee");
     },
     imgAlt(event) {
       event.target.src = this.alt;
@@ -122,7 +122,7 @@ export default {
       this.type('attendance?idattendance=')
       this.id(this.attendance.id)
       this.pathType(this.$route.path)
-      router.replace('/order/attendance')
+      router.push('/order/attendance')
     }
   }
 };

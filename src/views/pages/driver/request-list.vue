@@ -176,7 +176,7 @@ export default {
   },
   methods: {
     Cancel() {
-      this.$router.replace("/driver");
+      this.$router.push("/driver");
     },
     isNumber(evt) {
       evt = evt ? evt : window.event;
@@ -188,7 +188,7 @@ export default {
       }
     },
     reqDriver() {
-      this.$router.replace("/driver/request-driver");
+      this.$router.push("/driver/request-driver");
     },
     handlePageChange(page) {
       this.currentPage = page;

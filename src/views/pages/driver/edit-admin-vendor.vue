@@ -107,7 +107,7 @@ export default {
       this.$store.dispatch(action.UPDATE_DATA_ADMIN, this.form);
     },
     Cancel() {
-      this.$router.replace({
+      this.$router.push({
         path: "/detail-vendor/" + this.vendor.idvendor
       });
     },

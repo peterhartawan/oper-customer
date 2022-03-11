@@ -161,7 +161,7 @@ export default {
         getId(id) {
             this.$store.commit(mutation.BUTTON_STATUS, false)
             this.$store.dispatch(action.DATA_ID_VENDOR, id.idvendor);
-            this.$router.replace({
+            this.$router.push({
                 path: "/detail-vendor/" + id.idvendor
             });
         }
