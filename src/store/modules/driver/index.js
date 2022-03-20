@@ -20,7 +20,13 @@ const state = {
     driverAssignee: null,
     driverEnterprise: null,
     totalAccountD: null,
-    listReqDriver: null
+    requestDetails: null,
+    listReqDriver: null,
+    listDriverAssignee: null,
+    assignedDrivers: [],
+    checked: [],
+    selectedPlaces: [],
+    searchIndex: []
 };
 
 

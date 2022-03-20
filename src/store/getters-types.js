@@ -35,6 +35,12 @@ export const GET_DRIVER_ENTERPRISE      = 'driver/index/GET_DRIVER_ENTERPRISE ';
 export const GET_TOTAL_ACCOUNT_DRIVER   = 'dispatcher/index/GET_TOTAL_ACCOUNT_DRIVER';
 export const GET_DRIVER_A_LIST          = 'dispatcher/index/GET_DRIVER_A_LIST';
 export const GET_LIST_REQ_DRIVER        = 'driver/index/GET_LIST_REQ_DRIVER';
+export const GET_LIST_DRIVER_ASSIGNEE   = 'driver/index/GET_LIST_DRIVER_ASSIGNEE';
+export const GET_ASSIGNED_DRIVERS       = 'driver/index/GET_ASSIGNED_DRIVERS';
+export const GET_CHECK_STATUS           = 'driver/index/GET_CHECK_STATUS';
+export const GET_SELECTED_PLACES        = 'driver/index/GET_SELECTED_PLACES';
+export const GET_SEARCH_INDEX           = 'driver/index/GET_SEARCH_INDEX';
+export const GET_REQUEST_DETAILS        = 'driver/index/GET_REQUEST_DETAILS';
 
 //vendor
 export const GET_DROPDOWN_VENDOR        = 'vendor/index/GET_DROPDOWN_VENDOR';

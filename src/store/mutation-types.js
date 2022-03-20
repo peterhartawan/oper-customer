@@ -46,6 +46,11 @@ export const SET_TOTAL_ACCOUNT_DRIVER   = 'dispatcher/index/SET_TOTAL_ACCOUNT_DR
 export const SET_DISPATCHER_AVAILABLE   = 'dispatcher/index/SET_DISPATCHER_AVAILABLE';
 export const SET_DRIVER_D_AVAILABLE     = 'dispatcher/index/SET_DRIVER_D_AVAILABLE';
 export const SET_LIST_REQ_DRIVER        = 'driver/index/SET_LIST_REQ_DRIVER';
+export const SET_ASSIGNED_DRIVERS       = 'driver/index/SET_ASSIGNED_DRIVERS';
+export const RESET_ASSIGNED_DRIVERS     = 'driver/index/RESET_ASSIGNED_DRIVERS';
+export const SET_SEARCH_INDEX           = 'driver/index/SET_SEARCH_INDEX';
+export const SET_REQUEST_DETAILS        = 'driver/index/SET_REQUEST_DETAILS';
+export const RESET_REQUEST_DETAILS      = 'driver/index/RESET_REQUEST_DETAILS';
 
 //enterprise/index
 export const SET_LIST_COR               = 'enterprise/index/SET_LIST_COR'
