@@ -30,12 +30,7 @@ export default {
             let x = paToIndex + index
             if(state.checked[x] == null){
                 state.checked[x] = false
-
-                if(element.client_enterprise_identerprise == payload.identerprise){
-                    state.assignedDrivers[x] = element
-                    state.checked[x] = true
-                }
-   
+                
                 if(element.places != null){
                     var exists = 0;
                     payload.places.forEach((place) => {
@@ -44,6 +39,17 @@ export default {
                     });
                     if(exists){
                         state.selectedPlaces[x] = element.places
+                        if(payload.idplaces != null){
+                            if(state.selectedPlaces[x].idplaces == payload.idplaces && element.client_enterprise_identerprise == payload.identerprise){
+                                state.assignedDrivers[x] = element
+                                state.checked[x] = true
+                            }
+                        } else {
+                            if(element.client_enterprise_identerprise == payload.identerprise){
+                                state.assignedDrivers[x] = element
+                                state.checked[x] = true
+                            }
+                        }
                     }
                 }
             }

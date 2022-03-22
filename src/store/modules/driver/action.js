@@ -250,6 +250,7 @@ export default {
                 firstP      : data.data.first_page_url,
                 fromPA      : data.data.from,
                 identerprise: payload.identerprise,
+                idplaces    : payload.idplaces,
                 places      : await dispatch(action.ASSIGNEE_LOCATION, payload.identerprise)
             }
             commit(mutation.SET_LOADING, false);

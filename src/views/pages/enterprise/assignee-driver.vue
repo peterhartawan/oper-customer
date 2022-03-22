@@ -202,6 +202,10 @@ export default {
             this.form.idplaces = this.request_details[0].place_id
             this.form.idrequest = this.request_details[0].id
             this.form.time = this.request_details[0].purpose_time
+        } else {
+            this.form.idplaces = null
+            this.form.idrequest = null
+            this.form.time = null
         }
         this.$store.commit(mutation.SET_LOADING, true)
         this.$store.commit(mutation.RESET_ASSIGNED_DRIVERS)
