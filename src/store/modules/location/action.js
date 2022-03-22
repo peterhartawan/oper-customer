@@ -38,6 +38,17 @@ async [action.DROPDOWN_LOCATION]({commit, dispatch}, payload) {
             dispatch(action.DATA_ERROR, err)
      }
     },
+async [action.ASSIGNEE_LOCATION]({dispatch}, payload) {
+    try{
+        let token           = localStorage.getItem('token')
+        let {data} = await localAxios.get('/places/?identerprise='+payload+'&dropdown=1', {
+            headers: {'Authorization': 'Bearer '+token}
+        })
+        return data.data.data
+    }catch (err) {
+            dispatch(action.DATA_ERROR, err)
+        }
+    },
 async [action.CREATE_DATA_LOCATION]({commit, dispatch}, payload) {
     try{
         let token = localStorage.getItem('token');

@@ -33,6 +33,24 @@ export default {
 },
 [getter.GET_LIST_REQ_DRIVER](state){
     return state.listReqDriver
+},
+[getter.GET_LIST_DRIVER_ASSIGNEE](state) {
+    return state.listDriverAssignee
+},
+[getter.GET_ASSIGNED_DRIVERS](state){
+    return state.assignedDrivers
+},
+[getter.GET_CHECK_STATUS](state){
+    return state.checked
+},
+[getter.GET_SELECTED_PLACES](state){
+    return state.selectedPlaces
+},
+[getter.GET_SEARCH_INDEX](state){
+    return state.searchIndex
+},
+[getter.GET_REQUEST_DETAILS](state){
+    return state.requestDetails
 }
 };
 

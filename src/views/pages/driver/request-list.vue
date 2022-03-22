@@ -88,6 +88,7 @@
                 data.number_of_drivers.toString().includes(search.toLowerCase())
             )
           "
+          @row-click="assignDrivers"
           style="width: 100%"
         >
           <el-table-column
@@ -221,8 +222,19 @@ export default {
       };
       this.$store.dispatch(action.LIST_ORDER_CLIENT, obj);
     },
+    async assignDrivers(row){
+      let idrole = JSON.parse(localStorage.getItem('user')).idrole
+      let requestDetails = [row];
+      if (idrole === 2) {
+        this.$store.commit(mutation.SET_REQUEST_DETAILS, requestDetails)
+        this.$store.commit(mutation.SET_LOADING, true);
+        await this.$store.dispatch(action.DATA_ID_CORP, row.enterprise_id)
+        router.push('/assignee-driver/' + row.enterprise_id)
+      }
+    }
   },
   async created() {
+    this.$store.commit(mutation.SET_LOADING, true);
     await this.listData;
     await this.profile;
     await this.dropdown_location;

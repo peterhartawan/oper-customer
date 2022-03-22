@@ -14,6 +14,7 @@ const state = {
         fromP       : null
     },
     total: null,
+    assignedLocatons: null
 };
 
 

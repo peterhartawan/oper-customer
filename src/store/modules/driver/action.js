@@ -77,6 +77,22 @@ export default {
             dispatch(action.DATA_ERROR, err)
         }
     },
+    async [action.DROPDOWN_D_ASSIGNEE]({commit, dispatch}, payload) {
+        try{
+            let token = localStorage.getItem('token')
+            let {data} = await localAxios.get('/driver/?dropdown=1&limit=300&assignenterprise='+payload.identerprise, {
+                headers: {'Authorization': 'Bearer '+token}
+            })
+            let objList = {
+                dataList : data.data.data,
+            }
+            commit(mutation.SET_LOADING, false);
+            commit(mutation.SET_DROPDOWN_DRIVER, objList )
+        }catch (err) {
+            commit(mutation.SET_LOADING, false);
+            dispatch(action.DATA_ERROR, err)
+        }
+    },
     async [action.DRIVER_TYPE]({commit, dispatch}) {
         try{
             let token = localStorage.getItem('token')
@@ -219,7 +235,10 @@ export default {
     async [action.LIST_DRIVER_ASSIGNEE]({commit, dispatch}, payload) {
         try{
             let token = localStorage.getItem('token')
-            let {data} = await localAxios.get('/driver/?driver_type=2&page='+payload.page, {
+            let {data} = await localAxios.get('/driver/'+
+                '?page='+payload.page+
+                '&assignenterprise='+payload.identerprise+
+                '&places='+payload.idplaces, {
                 headers: {'Authorization': 'Bearer '+token}
             })
 
@@ -230,12 +249,17 @@ export default {
                 prevC       : data.data.prev_page_url,
                 firstP      : data.data.first_page_url,
                 fromPA      : data.data.from,
-    
+                identerprise: payload.identerprise,
+                idplaces    : payload.idplaces,
+                places      : await dispatch(action.ASSIGNEE_LOCATION, payload.identerprise)
             }
-            
-            commit(mutation.SET_LIST_DRIVER, objList )
+            commit(mutation.SET_LOADING, false);
+            commit(mutation.BUTTON_STATUS, false)
+            commit(mutation.SET_ASSIGNED_DRIVERS, objList )
         
         }catch (err) {
+            commit(mutation.SET_LOADING, false);
+            commit(mutation.BUTTON_STATUS, false)
             dispatch(action.DATA_ERROR, err)
         }
     },
@@ -244,20 +268,24 @@ export default {
             let token = localStorage.getItem('token');
             const jsonData = JSON.stringify({
                 identerprise        : payload.identerprise,
-                userid              : payload.userid,
-               
+                idrequest           : payload.idrequest,
+                time                : payload.time,
+                userdata            : payload.userdata,
+                unassign_ids        : payload.unassign_ids,
             });
 
             let { data } = await localAxios.put('/driver/assign-to-enterprise',
                 jsonData,
                 { headers: {'Authorization': 'Bearer '+token }
                 })
+                commit(mutation.SET_LOADING, false);
                 commit(mutation.BUTTON_STATUS, false)
                 dispatch(action.LIST_DRIVER_ENTERPRISE,{page: payload.page, identerprise: payload.identerprise})
                 router.push('/list-driver-enterprise/'+payload.identerprise)
         }catch(err){
+            commit(mutation.SET_LOADING, false);
             commit(mutation.BUTTON_STATUS, false)
-            swal("You need at least 1 driver to assign")
+            swal("Please check your location selection or driver selection.")
             dispatch(action.DATA_ERROR, err)
         }
     },
@@ -409,10 +437,12 @@ export default {
                 fromPA  : data.data.from
             }
             commit(mutation.BUTTON_STATUS, false);
+            commit(mutation.SET_LOADING, false);
             commit(mutation.SET_LIST_REQ_DRIVER, objList)
 
         }catch (err) {
             commit(mutation.BUTTON_STATUS, false)
+            commit(mutation.SET_LOADING, false);
             dispatch(action.DATA_ERROR, err)
         }
     },

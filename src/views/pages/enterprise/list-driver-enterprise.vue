@@ -360,6 +360,7 @@ export default {
       this.firstData();
     },
     Create() {
+      this.$store.commit(mutation.RESET_REQUEST_DETAILS)
       this.$store.commit(mutation.BUTTON_STATUS, false);
       this.$router.push({
         name: "assignee-driver",

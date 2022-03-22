@@ -46,6 +46,7 @@ export const DELETE_DRIVER          = 'driver/index/DELETE_DRIVER';
 export const ACTIVATE_DRIVER        = 'driver/index/ACTIVATE_DRIVER';
 export const LIST_DATA_DRIVER       = 'driver/index/LIST_DATA_DRIVER';
 export const DROPDOWN_DRIVER        = 'driver/index/DROPDOWN_DRIVER';
+export const DROPDOWN_D_ASSIGNEE    = 'driver/index/DROPDOWN_D_ASSIGNEE';
 export const DROPDOWN_D_AVAILABLE   = 'driver/index/DROPDOWN_D_AVAILABLE';
 export const DRIVER_TYPE            = 'driver/index/DRIVER_TYPE';
 export const DATA_ID_DRIVER         = 'driver/index/DATA_ID_DRIVER';
@@ -125,6 +126,7 @@ export const DETAIL_LOCATION        = 'location/index/DETAIL_LOCATION';
 export const UPDATE_DATA_LOCATION   = 'location/index/UPDATE_DATA_LOCATION';
 export const DELETE_LOCATION        = 'location/index/DELETE_LOCATION';
 export const DROPDOWN_LOCATION      = 'location/index/DROPDOWN_LOCATION';
+export const ASSIGNEE_LOCATION      = 'location/index/ASSIGNEE_LOCATION';
 
 //vehicle/index
 export const VEHICLE_BRAND          = 'location/index/VEHICLE_BRAND';
