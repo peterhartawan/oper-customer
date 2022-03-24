@@ -26,35 +26,46 @@ export default {
     [mutation.SET_ASSIGNED_DRIVERS](state, payload){
         
         var paToIndex = payload.fromPA - 1
+        let olxIdVendor = process.env.VUE_APP_ID_VENDOR_OLX
+        let idvendor = JSON.parse(localStorage.getItem('user')).vendor_idvendor
+        console.log(payload.dataList)
         payload.dataList.forEach((element, index) => {
             let x = paToIndex + index
             if(state.checked[x] == null){
                 state.checked[x] = false
                 
-                if(element.places != null){
-                    var exists = 0;
-                    payload.places.forEach((place) => {
-                        if(element.places.idplaces == place.idplaces)
-                            exists++
-                    });
-                    if(exists){
-                        state.selectedPlaces[x] = element.places
-                        if(payload.idplaces != null){
-                            if(state.selectedPlaces[x].idplaces == payload.idplaces && element.client_enterprise_identerprise == payload.identerprise){
-                                state.assignedDrivers[x] = element
-                                state.checked[x] = true
-                            }
-                        } else {
-                            if(element.client_enterprise_identerprise == payload.identerprise){
-                                state.assignedDrivers[x] = element
-                                state.checked[x] = true
+                if(idvendor == olxIdVendor){
+                    if(element.client_enterprise_identerprise == payload.identerprise){
+                        state.assignedDrivers[x] = element
+                        state.checked[x] = true
+                    }
+                }
+                else{
+                    if(element.places != null){
+                        var exists = 0;
+                        payload.places.forEach((place) => {
+                            if(element.places.idplaces == place.idplaces)
+                                exists++
+                        });
+                        if(exists){
+                            state.selectedPlaces[x] = element.places
+                            if(payload.idplaces != null){
+                                if(state.selectedPlaces[x].idplaces == payload.idplaces && element.client_enterprise_identerprise == payload.identerprise){
+                                    state.assignedDrivers[x] = element
+                                    state.checked[x] = true
+                                }
+                            } else {
+                                if(element.client_enterprise_identerprise == payload.identerprise){
+                                    state.assignedDrivers[x] = element
+                                    state.checked[x] = true
+                                }
                             }
                         }
                     }
                 }
             }
         })
-        
+
         state.listDriverAssignee    = payload.dataList
         state.driverTotal           = payload.total
         state.paginate.nextClick    = payload.nextC

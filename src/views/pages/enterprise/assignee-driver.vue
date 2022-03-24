@@ -86,7 +86,7 @@
                     <el-table-column prop="phonenumber" label="PHONE"></el-table-column>
                     <el-table-column prop="email" label="EMAIL"></el-table-column>
                     <el-table-column prop="ce_name" label="ENTERPRISE"></el-table-column>
-                    <el-table-column label="STAY LOCATION">
+                    <el-table-column v-if="this.form.idvendor != this.idOlx" label="STAY LOCATION">
                         <template slot-scope="scope_location">
                             <el-select
                                 v-model="selected_places[currentPageIndex+scope_location.$index]"
@@ -139,6 +139,7 @@ export default {
                 page: 1,
                 identerprise: '',
                 idplaces: '',
+                idvendor: '',
                 idrequest: null,
                 time: null,
                 unassign_ids: [],
@@ -159,6 +160,7 @@ export default {
             unassign_ids: [],
             userid: null,
             currentRow: null,
+            idOlx: null
         };
     },
     components: {
@@ -198,6 +200,8 @@ export default {
 
     mounted() {
         this.form.identerprise = this.enterprise.identerprise
+        this.form.idvendor = JSON.parse(localStorage.getItem('user')).vendor_idvendor
+        this.idOlx = process.env.VUE_APP_ID_VENDOR_OLX
         if(this.request_details){
             this.form.idplaces = this.request_details[0].place_id
             this.form.idrequest = this.request_details[0].id

@@ -68,9 +68,21 @@
         </el-col> -->
       </el-row>
       <el-row v-if="this.idrole === 5" :gutter="20" type="flex" justify="end">
-        <el-button @click="reqDriver" type="primary">
+        <el-button @click="reqDriver" type="primary" class="btn-assign">
           Request Driver
         </el-button>
+      </el-row>
+      <el-row type="flex" justify="center">
+        <el-radio-group v-model="changeTab" @change="tabChange" fill="#fffafa" >
+            <el-radio-button label="pending">
+                <img src="../../../assets/oper_asset/driver_request_pending_red.png" class="drive-acount" v-if="changeTab === 'pending'">
+                <img src="../../../assets/oper_asset/driver_request_pending_grey.png" class="drive-acount" v-else>
+            </el-radio-button>
+            <el-radio-button label="approved">
+                <img src="../../../assets/oper_asset/driver_request_approved_red.png" class="drive-acount" v-if="changeTab === 'approved'">
+                <img src="../../../assets/oper_asset/driver_request_approved_grey.png" class="drive-acount" v-else>
+            </el-radio-button>
+        </el-radio-group>
       </el-row>
       <el-row>
         <el-table
@@ -170,6 +182,7 @@ export default {
       idrole: "",
       tableData: [],
       form: {},
+      changeTab : 'pending'
     };
   },
   components: {
@@ -225,13 +238,41 @@ export default {
     async assignDrivers(row){
       let idrole = JSON.parse(localStorage.getItem('user')).idrole
       let requestDetails = [row];
-      if (idrole === 2) {
+      if (idrole === 2 && this.changeTab === 'pending') {
         this.$store.commit(mutation.SET_REQUEST_DETAILS, requestDetails)
         this.$store.commit(mutation.SET_LOADING, true);
         await this.$store.dispatch(action.DATA_ID_CORP, row.enterprise_id)
         router.push('/assignee-driver/' + row.enterprise_id)
       }
-    }
+    },
+    async tabChange(v){
+      var obj
+      this.$store.commit(mutation.SET_LOADING, true);
+      if(v === 'pending'){
+        obj = {
+          identerprise: this.profile.idrole === 5 ? this.profile.enterprise.identerprise : "",
+          status: 1,
+        }
+      } else {
+        obj = {
+          identerprise: this.profile.idrole === 5 ? this.profile.enterprise.identerprise : "",
+          status: 2,
+        }
+      }
+      await this.$store.dispatch(
+        action.LIST_REQ_DRIVER,
+        obj
+      );
+      this.$store.dispatch(action.VENDOR_PROFILE);
+      this.listData.dataList.forEach((el) => {
+        el.date = moment(el.purpose_time).format("DD MMMM YYYY");
+        el.time = moment(el.purpose_time).format("HH:mm");
+      });
+      this.tableData = this.listData.dataList;
+      this.totalData = this.listData.total;
+      this.currentPage = this.listData.fromPA;
+      this.idrole = this.profile.idrole;
+    },
   },
   async created() {
     this.$store.commit(mutation.SET_LOADING, true);
@@ -254,14 +295,18 @@ export default {
     this.dropdown_location = await this.$store.dispatch(
       action.DROPDOWN_LOCATION
     );
+    let obj = {
+      identerprise: this.profile.idrole === 5 ? this.profile.enterprise.identerprise : "",
+      status: 1,
+    }
     await this.$store.dispatch(
       action.LIST_REQ_DRIVER,
-      this.profile.idrole === 5 ? this.profile.enterprise.identerprise : ""
+      obj
     );
     this.$store.dispatch(action.VENDOR_PROFILE);
     this.listData.dataList.forEach((el) => {
       el.date = moment(el.purpose_time).format("DD MMMM YYYY");
-      el.time = moment(el.purpose_time).format("hh:mm");
+      el.time = moment(el.purpose_time).format("HH:mm");
     });
     this.tableData = this.listData.dataList;
     this.totalData = this.listData.total;
@@ -273,6 +318,11 @@ export default {
 
 <style lang="scss" scoped>
 @import "../../../assets/scss/_variables";
+
+.drive-acount {
+  height: 64px;
+  margin-top: 10px;
+}
 
 .card-base {
   padding: 20px;
@@ -334,5 +384,9 @@ a {
 
 td {
   padding: 10px;
+}
+
+.btn-assign{
+  height: 40px;
 }
 </style>
