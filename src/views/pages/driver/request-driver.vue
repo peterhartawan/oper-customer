@@ -10,30 +10,31 @@
             </el-col>
           </el-col>
         </el-row>
-        <el-row :gutter="20">
-          <el-col :span="12">
+        <el-row>
+          <el-col :span="20" :offset="2">
             <div class="grid-content">
-              <el-form-item label="Location" label-width="120px" prop="loc">
-                <el-select
-                  v-model="form.place_id"
-                  @change="changeLocation"
-                  placeholder="Order location"
-                >
-                  <el-option
-                    v-for="item in options"
-                    :key="item.value"
-                    :label="item.name"
-                    :value="item.idplaces"
-                  ></el-option>
-                </el-select>
+              <el-form-item label="Location">
+              <el-select
+                v-model="form.place_id"
+                @change="changeLocation"
+                placeholder="Order location"
+                size="large"
+              >
+                <el-option
+                  v-for="item in options"
+                  :key="item.value"
+                  :label="item.name"
+                  :value="item.idplaces"
+                ></el-option>
+              </el-select>
               </el-form-item>
             </div>
           </el-col>
         </el-row>
-        <el-row :gutter="20">
-          <el-col :span="12">
+        <el-row>
+          <el-col :span="20" :offset="2">
             <div class="grid-content">
-              <el-form-item prop="date" label="Date" label-width="120px">
+              <el-form-item prop="date" label="Date">
                 <el-date-picker
                   v-model="form.date"
                   type="date"
@@ -41,6 +42,7 @@
                   format="dd MMM yyyy"
                   value-format="dd MMM yyyy"
                   size="large"
+                  style="width: 100%;"
                   prefix-icon="el-icon-date"
                   :picker-options="pickerOptions"
                   @change="formatTime"
@@ -50,9 +52,9 @@
             </div>
           </el-col>
         </el-row>
-        <el-row :gutter="20">
-          <el-col :span="12">
-            <el-form-item prop="time" label="Time" label-width="120px">
+        <el-row>
+          <el-col :span="20" :offset="2">
+            <el-form-item prop="time" label="Time">
               <el-time-picker
                 v-model="form.time"
                 type="time"
@@ -60,6 +62,7 @@
                 format="HH:mm"
                 value-format="HH:mm"
                 size="large"
+                style="width:100%"
                 prefix-icon="el-icon-date"
                 @change="formatTime"
               >
@@ -67,24 +70,24 @@
             </el-form-item>
           </el-col>
         </el-row>
-        <el-row :gutter="20">
-          <el-col :span="12">
+        <el-row>
+          <el-col :span="20" :offset="2">
             <el-form-item
               prop="number_of_drivers"
               label="Jumlah Driver"
-              label-width="120px"
             >
               <el-input-number
                 v-model="form.number_of_drivers"
                 :min="1"
                 @change="changeDriverNumber"
+                style="width:100%"
               ></el-input-number>
             </el-form-item>
           </el-col>
         </el-row>
-        <el-row :gutter="20">
-          <el-col :span="12">
-            <el-form-item prop="note" label="Note" label-width="120px">
+        <el-row>
+          <el-col :span="20" :offset="2">
+            <el-form-item prop="note" label="Note">
               <el-input
                 type="textarea"
                 placeholder="Request Driver 10"
@@ -227,7 +230,7 @@ export default {
     formatTime() {
       this.form.purpose_time = moment(
         this.form.date + " " + this.form.time
-      ).format("YYYY-MM-DD hh:mm:ss");
+      ).format("YYYY-MM-DD HH:mm:ss");
     },
   },
   computed: {

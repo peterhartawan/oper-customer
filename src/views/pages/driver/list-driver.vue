@@ -40,138 +40,141 @@
       <el-row class="mt-20">
         <el-card shadow="always" class="card-border">
             <el-row :gutter="20">
-                <el-col :span="12" class="line-not-center">
-                    <div class="avatar2 align-vertical text-center">
-                        <img :src="form.photo" class="align-vertical-middle" alt="user avatar" @error="imgAlt" >
-                        <h1 class="name-of">{{ form.name }}</h1>
-                        <span>{{ form.status }}</span>
-                    </div>
-                    <el-row type="flex" justify="center" :gutter="20">
-                        <el-col :span="9">
-                            <div style="overflow-wrap: break-word">
-                                <dl>
-                                    <dt>NIK</dt>
-                                    <dd>{{form.nik}}</dd>
+                <div class="wrapper">
+                    <div class="line-not-center">
+                        <div class="avatar2 align-vertical text-center">
+                            <img :src="form.photo" class="align-vertical-middle" alt="user avatar" @error="imgAlt" >
+                            <h1 class="name-of">{{ form.name }}</h1>
+                            <span>{{ form.status }}</span>
+                        </div>
+                        <el-row type="flex" justify="center" :gutter="20">
+                            <el-col :span="9">
+                                <div style="overflow-wrap: break-word">
+                                    <dl>
+                                        <dt>NIK</dt>
+                                        <dd>{{form.nik}}</dd>
 
-                                    <dt>PHONE</dt>
-                                    <dd>{{form.phone}}</dd>
+                                        <dt>PHONE</dt>
+                                        <dd>{{form.phone}}</dd>
 
-                                    <dt>EMAIL</dt>
-                                    <dd>{{form.email}}</dd>
+                                        <dt>EMAIL</dt>
+                                        <dd>{{form.email}}</dd>
 
-                                    <dt>DRIVER TYPE</dt>
-                                    <dd>{{ form.driver_type }}</dd>
-                                </dl>
-                            </div>
-                        </el-col>
-                        <el-col :span="9">
-                            <div>
-                                <dl>
-                                    <dt>GENDER</dt>
-                                    <dd>{{form.gender}}</dd>
-
-                                    <dt>ADDRESS</dt>
-                                    <dd>{{form.address}}</dd>
-
-                                    <dt>BIRTHDAY</dt>
-                                    <dd>{{form.birthdate}}</dd>
-                                </dl>
-                            </div>
-                        </el-col>
-                    </el-row>
-
-                    <el-row type="flex"  justify="center" class="mt-10" v-if="user.idrole == 2">
-                        <el-col :span="6"><el-button @click="editButton()" type="info" size="small" class="small-edit">Edit</el-button></el-col>
-                        <el-col :span="spanPIN">
-                            <el-button
-                                    type="danger"
-                                    size="small"
-                                    :loading="buttonSuspend"
-                                    @click="suspendButton"
-                                    v-if="status === 1">
-                                Suspend
-                            </el-button>
-                            <el-button
-                                    type="success"
-                                    size="small"
-                                    :loading="buttonResendPIN"
-                                    @click="resendPIN"
-                                    v-if="form.first_login === 1 && status === 1">
-                                Resend PIN
-                            </el-button>
-                            <el-button
-                                    type="danger"
-                                    size="small"
-                                    :loading="buttonDelete"
-                                    @click="deleteB"
-                                    v-if="status === 3">
-                                Delete
-                            </el-button>
-                            <el-button
-                                    type="primary"
-                                    size="small"
-                                    :loading="buttonActive"
-                                    @click="activeButton"
-                                    v-if="status === 3">
-                                Active
-                            </el-button>
-                        </el-col>
-                    </el-row>
-                </el-col>
-
-                <el-col :span="12">
-                    <el-row type="flex"  justify="center" :gutter="20" class="mt-10">
-                        <el-col :span="user.idrole === 2 ? 10 : 16">
-                            <el-input
-                                    size="mini"
-                                    placeholder="Search"
-                                    @keyup.native="searchChange"
-                                    v-model="input4">
-                                <i slot="suffix" class="el-input__icon el-icon-search"></i>
-                            </el-input>
-                        </el-col>
-
-                        <el-col :span="6" v-if="user.idrole === 2">
-                            <el-select @change="filterStatus" v-model="status" filterable size="mini" placeholder="All Status">
-                                <el-option
-                                        v-for="item in select"
-                                        :key="item.status"
-                                        :label="item.name"
-                                        :value="item.status">
-                                </el-option>
-                            </el-select>
-                        </el-col>
-                    </el-row>
-
-                    <div class="contacts-list box grow scrollable only-y" v-loading="loading">
-                        <el-row>
-                            <div v-for="c in listData" :key="c.id" class="flex contact" @click="openDialog(c)">
-                                <div class="avatar align-vertical el-col el-col-4">
-                                    <img :src="c.profile_picture" class="align-vertical-middle" alt="user avatar" @error="imgAlt">
+                                        <dt>DRIVER TYPE</dt>
+                                        <dd>{{ form.driver_type }}</dd>
+                                    </dl>
                                 </div>
-                                <div class="info box grow flex el-col el-col-20">
-                                    <div class="name box grow flex column justify-center p-10 scrollable only-x">
-                                        <div class="fullname fs-18"><strong>{{c.name}}</strong></div>
-                                        <div class="phone fs-14 secondary-text">{{c.phonenumber}}</div>
-                                        <div class="email fs-14 secondary-text">{{c.email}}</div>
-                                    </div>
-                                    <div class="phone align-vertical p-10 green" v-if="c.status === 1"><span class="align-vertical-middle font-weight-600">ACTIVE</span></div>
-                                    <div class="phone align-vertical p-10" v-if="c.status === 2"><span class="align-vertical-middle font-weight-600">IN ACTIVE</span></div>
-                                    <div class="phone align-vertical p-10 red" v-if="c.status === 3"><span class="align-vertical-middle font-weight-600">SUSPANDED</span></div>
+                            </el-col>
+                            <el-col :span="9">
+                                <div>
+                                    <dl>
+                                        <dt>GENDER</dt>
+                                        <dd>{{form.gender}}</dd>
+
+                                        <dt>ADDRESS</dt>
+                                        <dd>{{form.address}}</dd>
+
+                                        <dt>BIRTHDAY</dt>
+                                        <dd>{{form.birthdate}}</dd>
+                                    </dl>
                                 </div>
-                            </div>
+                            </el-col>
                         </el-row>
-                        <div class="grid-content">
-                            <el-pagination
-                                    background
-                                    layout="prev, pager, next"
-                                    @current-change="handlePageChange"
-                                    :total="forTotal"
-                            ></el-pagination>
+
+                        <el-row type="flex"  justify="center" class="mt-10" v-if="user.idrole == 2">
+                            <el-col :span="6"><el-button @click="editButton()" type="info" size="small" class="small-edit">Edit</el-button></el-col>
+                            <el-col :span="spanPIN">
+                                <el-button
+                                        type="danger"
+                                        size="small"
+                                        :loading="buttonSuspend"
+                                        @click="suspendButton"
+                                        v-if="status === 1">
+                                    Suspend
+                                </el-button>
+                                <el-button
+                                        type="success"
+                                        size="small"
+                                        :loading="buttonResendPIN"
+                                        @click="resendPIN"
+                                        v-if="form.first_login === 1 && status === 1">
+                                    Resend PIN
+                                </el-button>
+                                <el-button
+                                        type="danger"
+                                        size="small"
+                                        :loading="buttonDelete"
+                                        @click="deleteB"
+                                        v-if="status === 3">
+                                    Delete
+                                </el-button>
+                                <el-button
+                                        type="primary"
+                                        size="small"
+                                        :loading="buttonActive"
+                                        @click="activeButton"
+                                        v-if="status === 3">
+                                    Active
+                                </el-button>
+                            </el-col>
+                        </el-row>
+                    </div>
+
+                    <div>
+                        <el-row type="flex"  justify="center" :gutter="20" class="mt-10">
+                            <el-col :span="user.idrole === 2 ? 10 : 16">
+                                <el-input
+                                        size="mini"
+                                        placeholder="Search"
+                                        @keyup.native="searchChange"
+                                        v-model="input4">
+                                    <i slot="suffix" class="el-input__icon el-icon-search"></i>
+                                </el-input>
+                            </el-col>
+
+                            <el-col :span="6" v-if="user.idrole === 2">
+                                <el-select @change="filterStatus" v-model="status" filterable size="mini" placeholder="All Status">
+                                    <el-option
+                                            v-for="item in select"
+                                            :key="item.status"
+                                            :label="item.name"
+                                            :value="item.status">
+                                    </el-option>
+                                </el-select>
+                            </el-col>
+                        </el-row>
+
+                        <div class="contacts-list box grow scrollable only-y" v-loading="loading">
+                            <el-row>
+                                <div v-for="c in listData" :key="c.id" class="flex contact" @click="openDialog(c)">
+                                    <div class="avatar align-vertical el-col el-col-6">
+                                        <img :src="c.profile_picture" class="align-vertical-middle" alt="user avatar" @error="imgAlt">
+                                    </div>
+                                    <div class="info box grow flex el-col el-col-18">
+                                        <div class="wrapper">
+                                            <div class="name box grow flex column justify-center p-10 scrollable only-x">
+                                                <div class="fullname fs-18"><strong>{{c.name}}</strong></div>
+                                                <div class="phone fs-14 secondary-text">{{c.phonenumber}}</div>
+                                                <div class="email fs-14 secondary-text">{{c.email}}</div>
+                                            </div>
+                                            <div class="phone align-vertical p-10 green" v-if="c.status === 1"><span class="align-vertical-middle font-weight-600">ACTIVE</span></div>
+                                            <div class="phone align-vertical p-10" v-if="c.status === 2"><span class="align-vertical-middle font-weight-600">IN ACTIVE</span></div>
+                                            <div class="phone align-vertical p-10 red" v-if="c.status === 3"><span class="align-vertical-middle font-weight-600">SUSPANDED</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </el-row>
+                            <div class="grid-content">
+                                <el-pagination
+                                        background
+                                        layout="prev, pager, next"
+                                        @current-change="handlePageChange"
+                                        :total="forTotal"
+                                ></el-pagination>
+                            </div>
                         </div>
                     </div>
-                </el-col>
-
+                </div>
             </el-row>
         </el-card>
       </el-row>
@@ -436,11 +439,26 @@ export default {
 
 <style lang="scss" scoped>
     @import "../../../assets/scss/_variables";
+
+    .line-not-center {
+        border-bottom: 1px solid $text-color-info;
+        border-right: 0px solid $text-color-info;
+    }
+
+    @media screen and (min-width: 600px) {
+        .wrapper {
+            display: grid;
+            grid-template-columns: 2fr 2fr;
+            column-gap: 5%;
+        }
+        .line-not-center {
+            border-bottom: 0px solid $text-color-info;
+            border-right: 1px solid $text-color-info;
+        }
+    }
+
     .card-border {
         border-radius: 11px;
-    }
-    .line-not-center {
-        border-right: 1px solid $text-color-info;
     }
     .line {
         border-right: 1px solid $text-color-info;
@@ -460,9 +478,10 @@ export default {
         img {
             border: 1px solid transparentize($text-color, .9);
             box-sizing: border-box;
-            width: 60px;
-            height: 60px;
+            max-width:100%;
+            max-height:100%;
             border-radius: 50%;
+            display: inline-block;
             transition: all .5s .25s;
         }
     }

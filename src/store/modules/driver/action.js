@@ -269,6 +269,7 @@ export default {
             const jsonData = JSON.stringify({
                 identerprise        : payload.identerprise,
                 idrequest           : payload.idrequest,
+                idvendor            : payload.idvendor,
                 time                : payload.time,
                 userdata            : payload.userdata,
                 unassign_ids        : payload.unassign_ids,
@@ -424,7 +425,7 @@ export default {
     async [action.LIST_REQ_DRIVER]({commit, dispatch}, payload) {
         try {
             let token = localStorage.getItem('token');
-            let { data } = await localAxios.get('driver-requests?enterprise_id='+payload,
+            let { data } = await localAxios.get('driver-requests?enterprise_id='+payload.identerprise+'&status='+payload.status,
                 {
                     headers: {'Authorization': 'Bearer '+token}
                 });
