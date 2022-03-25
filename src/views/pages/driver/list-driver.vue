@@ -40,8 +40,8 @@
       <el-row class="mt-20">
         <el-card shadow="always" class="card-border">
             <el-row :gutter="20">
-                <div class="flex-wrapper">
-                    <div class="line-not-center" style="flex: 1 1 50%; overflow: hidden;">
+                <div class="wrapper">
+                    <div class="line-not-center">
                         <div class="avatar2 align-vertical text-center">
                             <img :src="form.photo" class="align-vertical-middle" alt="user avatar" @error="imgAlt" >
                             <h1 class="name-of">{{ form.name }}</h1>
@@ -120,7 +120,7 @@
                         </el-row>
                     </div>
 
-                    <div style="flex: 1 1 50%; overflow: hidden;">
+                    <div>
                         <el-row type="flex"  justify="center" :gutter="20" class="mt-10">
                             <el-col :span="user.idrole === 2 ? 10 : 16">
                                 <el-input
@@ -144,21 +144,23 @@
                             </el-col>
                         </el-row>
 
-                        <div class="contacts-list scrollable only-y" v-loading="loading">
+                        <div class="contacts-list box grow scrollable only-y" v-loading="loading">
                             <el-row>
-                                <div v-for="c in listData" :key="c.id" class="contact" @click="openDialog(c)">
-                                    <div class="flex-wrapper">
-                                        <div class="avatar align-vertical" style="flex: 1 1 20%; overflow: hidden;">
-                                            <img :src="c.profile_picture" class="align-vertical-middle" alt="user avatar" @error="imgAlt">
+                                <div v-for="c in listData" :key="c.id" class="flex contact" @click="openDialog(c)">
+                                    <div class="avatar align-vertical el-col el-col-6">
+                                        <img :src="c.profile_picture" class="align-vertical-middle" alt="user avatar" @error="imgAlt">
+                                    </div>
+                                    <div class="info box grow flex el-col el-col-18">
+                                        <div class="wrapper">
+                                            <div class="name box grow flex column justify-center p-10 scrollable only-x">
+                                                <div class="fullname fs-18"><strong>{{c.name}}</strong></div>
+                                                <div class="phone fs-14 secondary-text">{{c.phonenumber}}</div>
+                                                <div class="email fs-14 secondary-text">{{c.email}}</div>
+                                            </div>
+                                            <div class="phone align-vertical p-10 green" v-if="c.status === 1"><span class="align-vertical-middle font-weight-600">ACTIVE</span></div>
+                                            <div class="phone align-vertical p-10" v-if="c.status === 2"><span class="align-vertical-middle font-weight-600">IN ACTIVE</span></div>
+                                            <div class="phone align-vertical p-10 red" v-if="c.status === 3"><span class="align-vertical-middle font-weight-600">SUSPANDED</span></div>
                                         </div>
-                                        <div class="name justify-center p-10 scrollable only-x" style="flex: 4 1 40%; overflow: auto;">
-                                            <div class="fullname fs-18 name-text"><strong>{{c.name}}</strong></div>
-                                            <div class="phone fs-14 secondary-text name-text">{{c.phonenumber}}</div>
-                                            <div class="email fs-14 secondary-text name-text">{{c.email}}</div>
-                                        </div>
-                                        <div class="phone align-vertical p-10 green" v-if="c.status === 1" style="flex: 1 1 20%; overflow: hidden;"><span class="align-vertical-middle font-weight-600">ACTIVE</span></div>
-                                        <div class="phone align-vertical p-10" v-if="c.status === 2"><span class="align-vertical-middle font-weight-600">IN ACTIVE</span></div>
-                                        <div class="phone align-vertical p-10 red" v-if="c.status === 3"><span class="align-vertical-middle font-weight-600">SUSPANDED</span></div>
                                     </div>
                                 </div>
                             </el-row>
@@ -442,25 +444,12 @@ export default {
         border-bottom: 1px solid $text-color-info;
         border-right: 0px solid $text-color-info;
     }
-    
-    .flex-wrapper {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-    }
-
-    .name-text{
-        text-align: center;
-    }
 
     @media screen and (min-width: 600px) {
-        .flex-wrapper {
-            display: flex;
-            align-items: center;
-            flex-direction: row;
-        }
-        .name-text{
-            text-align: left;
+        .wrapper {
+            display: grid;
+            grid-template-columns: 2fr 2fr;
+            column-gap: 5%;
         }
         .line-not-center {
             border-bottom: 0px solid $text-color-info;
@@ -489,11 +478,11 @@ export default {
         img {
             border: 1px solid transparentize($text-color, .9);
             box-sizing: border-box;
-            width:60px;
-            height:60px;
+            max-width:100%;
+            max-height:100%;
             border-radius: 50%;
+            display: inline-block;
             transition: all .5s .25s;
-            object-fit: cover;
         }
     }
     .avatar2 {
@@ -504,7 +493,6 @@ export default {
             height: 120px;
             border-radius: 50%;
             transition: all .5s .25s;
-            object-fit: cover;
         }
     }
     .name-of {
