@@ -80,7 +80,7 @@ export default {
     async [action.DROPDOWN_D_ASSIGNEE]({commit, dispatch}, payload) {
         try{
             let token = localStorage.getItem('token')
-            let {data} = await localAxios.get('/driver/?dropdown=1&limit=300&assignenterprise='+payload.identerprise, {
+            let {data} = await localAxios.get('/driver/?dropdown=1&status=1&limit=300&assignenterprise='+payload.identerprise, {
                 headers: {'Authorization': 'Bearer '+token}
             })
             let objList = {
@@ -237,6 +237,7 @@ export default {
             let token = localStorage.getItem('token')
             let {data} = await localAxios.get('/driver/'+
                 '?page='+payload.page+
+                '&status=1'+
                 '&assignenterprise='+payload.identerprise+
                 '&places='+payload.idplaces, {
                 headers: {'Authorization': 'Bearer '+token}

@@ -148,15 +148,17 @@
                             <el-row>
                                 <div v-for="c in listData" :key="c.id" class="contact" @click="openDialog(c)">
                                     <div class="flex-wrapper">
-                                        <div class="avatar align-vertical" style="flex: 1 1 20%; overflow: hidden;">
+                                        <div class="avatar align-vertical" style="flex: 0 0 20%; overflow: hidden;">
                                             <img :src="c.profile_picture" class="align-vertical-middle" alt="user avatar" @error="imgAlt">
                                         </div>
-                                        <div class="name justify-center p-10 scrollable only-x" style="flex: 4 1 40%; overflow: auto;">
-                                            <div class="fullname fs-18 name-text"><strong>{{c.name}}</strong></div>
+                                        <div class="name justify-center p-10 scrollable only-x" style="flex: 0 0 45%; overflow: auto;">
+                                            <div class="fullname fs-18 name-text ww-normal"><strong>{{c.name}}</strong></div>
                                             <div class="phone fs-14 secondary-text name-text">{{c.phonenumber}}</div>
                                             <div class="email fs-14 secondary-text name-text">{{c.email}}</div>
                                         </div>
-                                        <div class="phone align-vertical p-10 green" v-if="c.status === 1" style="flex: 1 1 20%; overflow: hidden;"><span class="align-vertical-middle font-weight-600">ACTIVE</span></div>
+                                        <div class="align-vertical ml-5" style="flex: 0 0 30%; overflow: hidden;">
+                                            <img src="../../../assets/images/whatsapp-button.png" @click="goToWA(c.phonenumber)" class="wa-button align-vertical-middle">
+                                        </div>
                                         <div class="phone align-vertical p-10" v-if="c.status === 2"><span class="align-vertical-middle font-weight-600">IN ACTIVE</span></div>
                                         <div class="phone align-vertical p-10 red" v-if="c.status === 3"><span class="align-vertical-middle font-weight-600">SUSPANDED</span></div>
                                     </div>
@@ -273,6 +275,11 @@ export default {
   },
 
   methods: {
+      goToWA(phone){
+          let newPhoneFormat = "62" + phone.substring(1)
+          let link = "https://wa.me/" + newPhoneFormat
+          window.open(link)
+      },
       async searchChange(v){
           let trimName = this.input4.trim();
           this.$store.commit(mutation.BUTTON_STATUS, true);
@@ -438,6 +445,10 @@ export default {
 <style lang="scss" scoped>
     @import "../../../assets/scss/_variables";
 
+    .ww-normal {
+        word-wrap: normal
+    }
+
     .flex-wrapper {
         display: flex;
         align-items: center;
@@ -539,6 +550,10 @@ export default {
     }
     .red {
         color: red;
+    }
+    .wa-button {
+        width: 120px;
+        height: auto;
     }
 
 
