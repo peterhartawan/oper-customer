@@ -112,6 +112,7 @@ export default {
                 name: payload.admin_name,
                 email: payload.admin_email,
                 phonenumber: payload.admin_phonenumber,
+                idrole: payload.idrole,
             });
 
             let { data } = await localAxios.put('/user/' + payload.idadmin,
@@ -137,6 +138,7 @@ export default {
             let token = localStorage.getItem('token');
             const jsonData = JSON.stringify({
                 idvendor: payload.idvendor,
+                idrole: payload.idrole,
                 admin_name: payload.admin_name,
                 admin_email: payload.admin_email,
                 admin_mobile_number: payload.admin_phonenumber,

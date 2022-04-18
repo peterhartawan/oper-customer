@@ -56,7 +56,11 @@ const actions = {
             commit('setLogin', data.status);
             commit(mutation.BUTTON_STATUS, false)
             if (data.status){
-                router.push('dashboard')
+                //check if account is vendor sub admin
+                if(userProfile.data.data.idrole == 9)
+                    router.push('attendance/driver')
+                else
+                    router.push('dashboard')
             }
             dispatch(action.SET_LOGOUT_TIMER, data.data.expires_in)
         }
@@ -89,7 +93,13 @@ const actions = {
         }
         commit(mutation.AUTH_USER, {token : token });
         commit('setLogin', tokenCon);
-        router.push('dashboard')
+
+        //check if account is vendor sub admin
+        let idrole = JSON.parse(localStorage.getItem('user')).idrole
+        if(idrole == 9)
+            router.push('attendance/driver')
+        else
+            router.push('dashboard')
     },
     async [action.LOGOUT]({commit, dispatch}){
         try {
