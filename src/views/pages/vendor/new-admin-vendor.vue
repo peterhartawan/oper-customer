@@ -2,7 +2,7 @@
     <div class="page-table scrollable only-y" id="affix-container">
         <div class="card-base card-shadow--medium bg-white">
             <el-form ref="form" :rules="rules" :model="form">
-                <el-row :gutter="20">
+                <el-row :gutter="20" class="mb-20">
                     <el-col>Admin</el-col>
                 </el-row>
                 <el-row :gutter="20">
@@ -23,8 +23,19 @@
                         </el-form-item>
                     </el-col>
                 </el-row>
+                <el-row :gutter="20">
+                    <el-col :lg="8">
+                        <el-select
+                            v-model="form.idrole"
+                            placeholder="Admin Type"
+                        >
+                            <el-option label="Admin" value="2">Admin</el-option>
+                            <el-option label="Sub-Admin" value="9">Sub-Admin</el-option>
+                        </el-select>
+                    </el-col>
+                </el-row>
             </el-form>
-            <div style="margin: 50px 0;"></div>
+            <div style="margin: 30px 0;"></div>
             <el-row>
                 <el-col :lg="2">
                     <el-button
@@ -54,15 +65,15 @@
     </div>
 </template>
 
-<style lang="scss" scoped>
-    .el-row {
-        margin-bottom: 10px;
+<!--<style lang="scss" scoped>
+    //.el-row {
+        // margin-bottom: 10px;
 
-        &:last-child {
-            margin-bottom: 0;
-        }
-    }
-</style>
+        // &:last-child {
+        //     margin-bottom: 0;
+        // }
+    //}
+</style>-->
 
 <script>
     import router from "../../../router";
@@ -92,6 +103,7 @@
                 form: {
                     idvendor: "",
                     idadmin: "",
+                    idrole:"",
                     admin_name: "",
                     admin_phonenumber: "",
                     admin_email: "",
@@ -179,10 +191,10 @@
         // align-items: center;
         // justify-content: center;
         padding: 0px 10px;
-        margin-bottom: 20px;
-        &:last-child {
-            margin-bottom: 0;
-        }
+        // margin-bottom: 20px;
+        // &:last-child {
+        //     margin-bottom: 0;
+        // }
     }
 
     .el-col {
