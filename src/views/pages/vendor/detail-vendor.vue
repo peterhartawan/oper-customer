@@ -61,21 +61,31 @@
         </el-row>
         <div v-for="(domain) in vendor.admins" :key="domain.key">
             <el-row :gutter="20" style="margin-top: 20px">
-                <el-col :lg="8">
+                <el-col :lg="5">
                     <b>Admin Name</b>
                     <br>
                     {{ domain.name}}
                 </el-col>
-                <el-col :lg="6">
+                <el-col :lg="5">
                     <b>Admin Mobile Phone</b>
                     <br>
                     {{ domain.phonenumber}}
                 </el-col>
-                <el-col :lg="8">
+                <el-col :lg="7">
                     <b>Admin Email</b>
                     <br>
                     <span style="word-break: break-all">
                         {{ domain.email}}
+                    </span>
+                </el-col>
+                <el-col :lg="5">
+                    <b>Admin Type</b>
+                    <br>
+                    <span v-if="domain.idrole == 2" style="word-break: break-all">
+                        Admin
+                    </span>
+                    <span v-if="domain.idrole == 9" style="word-break: break-all">
+                        Sub-Admin
                     </span>
                 </el-col>
                 <el-col :lg="2">
