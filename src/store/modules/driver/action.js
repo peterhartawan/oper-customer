@@ -80,7 +80,12 @@ export default {
     async [action.DROPDOWN_D_ASSIGNEE]({commit, dispatch}, payload) {
         try{
             let token = localStorage.getItem('token')
-            let {data} = await localAxios.get('/driver/?dropdown=1&status=1&limit=300&assignenterprise='+payload.identerprise, {
+            let {data} = await localAxios.get('/driver/'+
+            '?dropdown=1'+
+            '&status=1'+
+            '&limit=300'+
+            '&assignenterprise='+payload.identerprise+
+            '&places='+payload.idplaces, {
                 headers: {'Authorization': 'Bearer '+token}
             })
             let objList = {
@@ -426,10 +431,15 @@ export default {
     async [action.LIST_REQ_DRIVER]({commit, dispatch}, payload) {
         try {
             let token = localStorage.getItem('token');
-            let { data } = await localAxios.get('driver-requests?enterprise_id='+payload.identerprise+'&status='+payload.status,
+            let { data } = await localAxios.get(
+                'driver-requests?enterprise_id='+payload.identerprise+
+                '&status='+payload.status+
+                '&page='+payload.page+
+                '&order_by='+payload.order_by,
                 {
                     headers: {'Authorization': 'Bearer '+token}
-                });
+                }
+            );
             let objList = {
                 dataList : data.data.data,
                 total   : data.data.total,

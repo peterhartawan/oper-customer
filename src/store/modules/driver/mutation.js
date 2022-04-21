@@ -28,7 +28,6 @@ export default {
         var paToIndex = payload.fromPA - 1
         let olxIdVendor = process.env.VUE_APP_ID_VENDOR_OLX
         let idvendor = JSON.parse(localStorage.getItem('user')).vendor_idvendor
-        console.log(payload.dataList)
         payload.dataList.forEach((element, index) => {
             let x = paToIndex + index
             if(state.checked[x] == null){
