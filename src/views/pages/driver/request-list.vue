@@ -105,6 +105,7 @@
         >
           <el-table-column
             type="index"
+            :index="listData.fromPA"
             align="center"
             label="NO"
             width="60"
@@ -182,7 +183,8 @@ export default {
       idrole: "",
       tableData: [],
       form: {},
-      changeTab : 'pending'
+      changeTab : 'pending',
+
     };
   },
   components: {
@@ -204,15 +206,34 @@ export default {
     reqDriver() {
       this.$router.push("/driver/request-driver");
     },
-    handlePageChange(page) {
+    async handlePageChange(page) {
       this.currentPage = page;
-      this.$store.commit(mutation.BUTTON_STATUS, true);
-      this.$store.dispatch(action.LIST_DISPATCHER, {
-        page: this.currentPage,
-        dispathcer_search: input4,
-        typedispatcher: this.type,
-        status: this.status,
+      this.$store.commit(mutation.SET_LOADING, true);
+      var obj
+      if(this.changeTab === 'pending'){
+        obj = {
+          identerprise: this.profile.idrole === 5 ? this.profile.enterprise.identerprise : "",
+          status: 1,
+          order_by: "id",
+          page: page,
+        }
+      } else {
+        obj = {
+          identerprise: this.profile.idrole === 5 ? this.profile.enterprise.identerprise : "",
+          status: 2,
+          order_by: "updated_at",
+          page: page,
+        }
+      }
+      await this.$store.dispatch(
+        action.LIST_REQ_DRIVER,
+        obj
+      );
+      this.listData.dataList.forEach((el) => {
+        el.date = moment(el.purpose_time).format("DD MMMM YYYY");
+        el.time = moment(el.purpose_time).format("HH:mm");
       });
+      this.tableData = this.listData.dataList;
     },
     findLocation(id) {
       this.list.forEach((element) => {});
@@ -252,11 +273,15 @@ export default {
         obj = {
           identerprise: this.profile.idrole === 5 ? this.profile.enterprise.identerprise : "",
           status: 1,
+          order_by: "id",
+          page: 1,
         }
       } else {
         obj = {
           identerprise: this.profile.idrole === 5 ? this.profile.enterprise.identerprise : "",
           status: 2,
+          order_by: "updated_at",
+          page: 1,
         }
       }
       await this.$store.dispatch(
@@ -297,7 +322,9 @@ export default {
     );
     let obj = {
       identerprise: this.profile.idrole === 5 ? this.profile.enterprise.identerprise : "",
+      order_by: "id",
       status: 1,
+      page: 1,
     }
     await this.$store.dispatch(
       action.LIST_REQ_DRIVER,
