@@ -51,6 +51,9 @@ export default {
 },
 [getter.GET_REQUEST_DETAILS](state){
     return state.requestDetails
-}
+},
+[getter.GET_SELECTED_TIMES](state){
+    return state.selectedTimes
+},
 };
 

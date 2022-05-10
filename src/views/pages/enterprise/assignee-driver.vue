@@ -75,17 +75,29 @@
                 </el-select>
             </el-col>
             <el-col :lg="8">
-                <el-button :loading="button" @click="Create" style="width: 100%" type="success">Assign Driver To Enterprise</el-button>
+                <el-button :loading="button" @click="Confirm" style="width: 100%" type="success">Assign Driver To Enterprise</el-button>
             </el-col>
         </el-row>
         <el-row :gutter="10">
             <el-col :lg="24">
                 <el-table highlight-current-row ref="assigneeTable" :data="listData" style="width: 100%" v-loading="loading">
-                    <el-table-column type="index" :index="paginate.fromP" label="NO" width="100"></el-table-column>
+                    <el-table-column type="index" :index="paginate.fromP" label="NO" width="60"></el-table-column>
                     <el-table-column prop="name" label="NAME"></el-table-column>
                     <el-table-column prop="phonenumber" label="PHONE"></el-table-column>
-                    <el-table-column prop="email" label="EMAIL"></el-table-column>
+                    <!-- <el-table-column prop="email" label="EMAIL"></el-table-column> -->
                     <el-table-column prop="ce_name" label="ENTERPRISE"></el-table-column>
+                    <el-table-column v-if="this.form.idvendor != this.idOlx" label="DATE & TIME">
+                        <template slot-scope="scope_time">
+                            <el-date-picker
+                                v-model="selected_times[currentPageIndex+scope_time.$index]"
+                                format="dd-MM-yyyy HH:mm"
+                                value-format="yyyy-MM-dd HH:mm:ss"
+                                type="datetime"
+                                style="width:100%"
+                            >
+                            </el-date-picker>
+                        </template>
+                    </el-table-column>
                     <el-table-column v-if="this.form.idvendor != this.idOlx" label="STAY LOCATION">
                         <template slot-scope="scope_location">
                             <el-select
@@ -117,12 +129,82 @@
         <div align="right">
             <el-pagination :current-page.sync="currentPage" background layout="prev, pager, next" @current-change="handlePageChange" :total="forTotal"></el-pagination>
         </div>
+        <el-dialog :visible.sync="showSelectedDrivers" width="60%">
+            <el-row v-if="request_details" :gutter="10">
+                <p class="font-weight-600" align="center">REQUEST DRIVER DETAILS</p>
+            </el-row>
+            <el-row v-if="request_details" :gutter="20">
+                <el-table
+                :data="request_details"
+                style="width: 100%"
+                >
+                <el-table-column
+                    prop="enterprise.name"
+                    align="center"
+                    label="ENTERPRISE"
+                ></el-table-column>
+                <el-table-column
+                    prop="place.name"
+                    align="center"
+                    label="LOKASI"
+                ></el-table-column>
+                <el-table-column
+                    prop="date"
+                    header-align="center"
+                    align="center"
+                    label="TANGGAL"
+                ></el-table-column>
+                <el-table-column
+                    prop="time"
+                    header-align="center"
+                    align="center"
+                    label="JAM"
+                ></el-table-column>
+                <el-table-column
+                    prop="number_of_drivers"
+                    header-align="center"
+                    align="center"
+                    label="JUMLAH"
+                ></el-table-column>
+                <el-table-column
+                    prop="note"
+                    header-align="center"
+                    align="center"
+                    label="NOTES"
+                ></el-table-column>
+                </el-table>
+            </el-row>
+            <el-row :gutter="10">
+                <p class="font-weight-600" align="center">LIST DRIVER</p>
+            </el-row>
+            <el-row :gutter="20">
+                <el-table highlight-current-row ref="selectedDriversTable" :data="final_drivers" style="width: 100%" v-loading="loading">
+                    <el-table-column type="index" label="NO" width="60"></el-table-column>
+                    <el-table-column prop="name" label="NAME"></el-table-column>
+                    <el-table-column prop="phonenumber" label="PHONE"></el-table-column>
+                    <el-table-column v-if="this.form.idvendor != this.idOlx" prop="stay_time" label="DATE & TIME"></el-table-column>
+                    <el-table-column v-if="this.form.idvendor != this.idOlx" prop="loc_name" label="STAY LOCATION"></el-table-column>
+                </el-table>
+            </el-row>
+            <el-row>
+                <p class="font-weight-600" align="center">Apakah anda yakin untuk assign driver?</p>
+            </el-row>
+            <el-row type="flex" justify="center">
+                <el-button @click="Create" type="success" size="medium">
+                    Ya
+                </el-button>
+                <el-button @click="Cancel" type="danger" size="medium">
+                    Tidak
+                </el-button>
+            </el-row>
+        </el-dialog>
     </div>
 </div>
 </template>
 
 <script>
 import Affix from "@/components/Affix";
+import moment from "moment";
 import {
     mapGetters,
     mapActions
@@ -160,7 +242,9 @@ export default {
             unassign_ids: [],
             userid: null,
             currentRow: null,
-            idOlx: null
+            idOlx: null,
+            showSelectedDrivers: false,
+            final_drivers: [],
         };
     },
     components: {
@@ -179,7 +263,8 @@ export default {
             check_status: getter.GET_CHECK_STATUS,
             selected_places: getter.GET_SELECTED_PLACES,
             search_index: getter.GET_SEARCH_INDEX,
-            request_details: getter.GET_REQUEST_DETAILS
+            request_details: getter.GET_REQUEST_DETAILS,
+            selected_times: getter.GET_SELECTED_TIMES,
         }),
         paginator() {
             return this.paginate;
@@ -218,6 +303,23 @@ export default {
     },
 
     methods: {
+        Cancel(){
+            this.showSelectedDrivers = false
+        },
+        Confirm(){
+            this.final_drivers = []
+            this.showSelectedDrivers = true
+            this.selected_drivers.forEach((element, index) => {
+                if(this.selected_drivers[index] != null){
+                    if(this.form.idvendor != this.idOlx){
+                        element.stay_time = moment(this.selected_times[index]).format("DD-MM-YYYY HH:mm")
+                        element.loc_name = this.selected_places[index].name
+                    }
+                    this.final_drivers.push(element)
+                }
+            })
+            console.log(this.final_drivers)
+        },
         setCurrent(row) {
             this.$refs.assigneeTable.setCurrentRow(row)
         },
@@ -240,22 +342,31 @@ export default {
             this.setCurrent(this.listData[this.search_index])
         },
         Create() {
+            this.showSelectedDrivers = false
             this.form.userdata = []
             this.selected_drivers.forEach((element, index) => {
-                let idplaces
-                if(this.selected_places[index] != null){
-                    idplaces = this.selected_places[index].idplaces
+                if(this.form.idvendor != this.idOlx){
+                    let idplaces = this.selected_places[index].idplaces
+                    let stay_time = this.selected_times[index]
+                    if(element != null){
+                        let id = element.users_id
+                        var userdata = 
+                            {
+                                id          : id,
+                                idplaces    : idplaces,
+                                stay_time   : stay_time
+                            }
+                        this.form.userdata.push(userdata)
+                    }
                 } else {
-                    idplaces = null
-                }
-                if(element != null){
-                    let id = element.users_id
-                    var userdata = 
-                        {
-                            id          : id,
-                            idplaces    : idplaces
-                        }
-                    this.form.userdata.push(userdata)
+                    if(element != null){
+                        let id = element.users_id
+                        var userdata = 
+                            {
+                                id          : id
+                            }
+                        this.form.userdata.push(userdata)
+                    }
                 }
             })
             this.form.unassign_ids = []
@@ -279,6 +390,17 @@ export default {
             let pageToIndex = (this.form.page - 1) * 10
             let x = pageToIndex + e.$index
             if(this.selected_drivers[x] == null){
+                //if request details exists, update selected location and time
+                if(this.request_details){
+                    //update location dropdown
+                    this.options.forEach((element) => {
+                        if(element.idplaces == this.request_details[0].place_id)
+                            this.selected_places[x] = element
+                    })
+                    //update time field
+                    this.selected_times[x] = this.request_details[0].purpose_time
+                }
+
                 this.selected_drivers[x] = e.row
                 if(this.selected_places[x] == null)
                     this.selected_drivers[x].places = this.selected_places[x]

@@ -23,10 +23,11 @@ const state = {
     requestDetails: null,
     listReqDriver: null,
     listDriverAssignee: null,
-    assignedDrivers: [],
+    assignedDrivers: null,
     checked: [],
     selectedPlaces: [],
-    searchIndex: []
+    searchIndex: [],
+    selectedTimes: []
 };
 
 

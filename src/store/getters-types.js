@@ -41,6 +41,7 @@ export const GET_CHECK_STATUS           = 'driver/index/GET_CHECK_STATUS';
 export const GET_SELECTED_PLACES        = 'driver/index/GET_SELECTED_PLACES';
 export const GET_SEARCH_INDEX           = 'driver/index/GET_SEARCH_INDEX';
 export const GET_REQUEST_DETAILS        = 'driver/index/GET_REQUEST_DETAILS';
+export const GET_SELECTED_TIMES         = 'driver/index/GET_SELECTED_TIMES';
 
 //vendor
 export const GET_DROPDOWN_VENDOR        = 'vendor/index/GET_DROPDOWN_VENDOR';

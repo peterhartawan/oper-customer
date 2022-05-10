@@ -244,20 +244,23 @@ export default {
                 '?page='+payload.page+
                 '&status=1'+
                 '&assignenterprise='+payload.identerprise+
-                '&places='+payload.idplaces, {
+                '&places='+payload.idplaces+
+                '&usepagination=1', {
                 headers: {'Authorization': 'Bearer '+token}
             })
 
             let objList = {
-                dataList    : data.data.data,
-                total       : data.data.total,
-                nextC       : data.data.next_page_url,
-                prevC       : data.data.prev_page_url,
-                firstP      : data.data.first_page_url,
-                fromPA      : data.data.from,
-                identerprise: payload.identerprise,
-                idplaces    : payload.idplaces,
-                places      : await dispatch(action.ASSIGNEE_LOCATION, payload.identerprise)
+                dataList            : data.data.data,
+                total               : data.data.total,
+                nextC               : data.data.next_page_url,
+                prevC               : data.data.prev_page_url,
+                firstP              : data.data.first_page_url,
+                fromPA              : data.data.from,
+                identerprise        : payload.identerprise,
+                idplaces            : payload.idplaces,
+                stay_time           : payload.time,
+                selected_drivers    : data.data.selected_drivers,
+                places              : await dispatch(action.ASSIGNEE_LOCATION, payload.identerprise)
             }
             commit(mutation.SET_LOADING, false);
             commit(mutation.BUTTON_STATUS, false)
