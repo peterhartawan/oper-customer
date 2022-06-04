@@ -101,10 +101,12 @@ export const DELETE_DISPATCHER      = 'dispatcher/index/DELETE_DISPATCHER';
 export const UPDATE_DISPATCHER      = 'dispatcher/index/UPDATE_DISPATCHER';
 export const SEARCH_DISPATCHER      = 'dispatcher/index/SEARCH_DISPATCHER';
 export const ASSIGN_TO_ENTERPRISE   = 'enterprise/index/ASSIGN_TO_ENTERPRISE';
+export const MULTI_TO_ENTERPRISE   = 'enterprise/index/MULTI_TO_ENTERPRISE';
 export const ACTIVATE_DISPATCHER    = 'dispatcher/index/ACTIVATE_DISPATCHER';
 export const SUSPEND_DISPATCHER     = 'dispatcher/index/SUSPEND_DISPATCHER';
 export const TOTAL_ACCOUNT_DISPATCHER= 'dispatcher/index/TOTAL_ACCOUNT_DISPATCHER';
 export const DISPATCHER_AVAILABLE   = 'dispatcher/index/DISPATCHER_AVAILABLE';
+export const MULTI_DISPATCHER_AVAILABLE   = 'dispatcher/index/MULTI_DISPATCHER_AVAILABLE';
 
 //order-client/index
 export const LIST_ORDER_CLIENT      = 'order-client/index/LIST_ORDER_CLIENT'

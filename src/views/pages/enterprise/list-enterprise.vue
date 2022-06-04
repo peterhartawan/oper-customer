@@ -159,9 +159,17 @@ export default {
         },
         async getId(id) {
             await this.$store.dispatch(action.DATA_ID_CORP, id);
-            this.$router.push({
-                path: '/detail-enterprise/' + id
-            })
+            let idvendor = JSON.parse(localStorage.getItem('user')).vendor_idvendor
+            let idOlx = process.env.VUE_APP_ID_VENDOR_OLX
+            if(idvendor != idOlx){
+                this.$router.push({
+                    path: '/detail-enterprise/' + id
+                })
+            } else {
+                this.$router.push({
+                    path: '/detail-enterprise-md/' + id
+                })
+            }
         },
         indexMethod(index) {
             return index + this.paginato.fromP;

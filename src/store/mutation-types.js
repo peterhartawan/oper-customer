@@ -75,6 +75,7 @@ export const SET_LIST_DISPATCHER        = 'dispatcher/index/SET_LIST_DISPATCHER'
 export const SET_DISPATCHER_RES         = 'dispatcher/index/SET_DISPATCHER_RES'
 export const SET_ID_DISPATCHER          = 'dispatcher/index/SET_ID_DISPATCHER'
 export const SET_TOTAL_ACCOUNT_DISPCHER = 'dispatcher/index/SET_TOTAL_ACCOUNT_DISPCHER'
+export const SET_SELECTED_DISPATCHERS   = 'dispatcher/index/SET_SELECTED_DISPATCHERS'
 
 //order-client/index
 export const SET_L_ORDER_CLIET          = 'order-list/index/SET_L_ORDER_CLIET';

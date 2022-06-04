@@ -188,6 +188,27 @@ export default {
             dispatch(action.DATA_ERROR, err)
         }
     },
+    async [action.MULTI_TO_ENTERPRISE]({commit, dispatch}, payload) {
+        try{
+            let token = localStorage.getItem('token')
+            let jsonData = JSON.stringify({
+                // dispatcher_userid   : payload.id,
+                assign_ids          : payload.assign_ids,
+                unassign_ids        : payload.unassign_ids,
+                identerprise        : payload.identerprise
+            })
+            let { data } = await localAxios.put(typeS.multi_to_enteprise,
+                jsonData, { headers: {  'Authorization': 'Bearer '+token}
+            })
+            swal(data.data, '', 'success')
+            dispatch(action.DATA_ID_CORP, payload.identerprise)
+            // dispatch(action.DISPATCHER_AVAILABLE, this.form)
+            router.replace({ path: '/enterprise/'})
+        }catch (err) {
+            swal(err.response.data.message,'', 'error')
+            dispatch(action.DATA_ERROR, err)
+        }
+    },
     async [action.SUSPEND_DISPATCHER]({commit, dispatch}, payload) {
         try{
             let token = localStorage.getItem('token');
@@ -269,6 +290,27 @@ export default {
             commit(mutation.BUTTON_STATUS, false);
             commit(mutation.SET_DISPATCHER_AVAILABLE, data.data);
 
+        }catch (err) {
+            commit(mutation.BUTTON_STATUS, false);
+            dispatch(action.DATA_ERROR, err)
+        }
+    },
+    async [action.MULTI_DISPATCHER_AVAILABLE]({commit, dispatch}, payload) {
+        try{
+            let path;
+            (payload.search === undefined) ? 
+                path = 
+                `${typeS.dispatcher}mdavailable?assignenterprise=${payload.assignEnterprise}` 
+                : 
+                path = 
+                `${typeS.dispatcher}mdavailable?q=${payload.search}&assignenterprise=${payload.assignEnterprise}`
+            let token = localStorage.getItem('token');
+            let { data } = await localAxios.get(path,
+                {
+                    headers: {'Authorization': 'Bearer '+token}
+                });
+            commit(mutation.BUTTON_STATUS, false);
+            commit(mutation.SET_DISPATCHER_AVAILABLE, data.data);
         }catch (err) {
             commit(mutation.BUTTON_STATUS, false);
             dispatch(action.DATA_ERROR, err)

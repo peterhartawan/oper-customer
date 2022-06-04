@@ -19,5 +19,8 @@ export default {
     },
     [getter.GET_DISPATCHER_AVAILABLE](state){
         return state.dispatcherAvail
-    }
+    },
+    [getter.GET_SELECTED_DISPATCHERS](state){
+        return state.selectedDispatchers
+    },
 };
