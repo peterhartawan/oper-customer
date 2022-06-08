@@ -5,20 +5,21 @@ import actions from './action'
 // import enterprise from "../../../router/enterprise";
 
 const state = {
-    listCor: null,
+    listCor             : null,
     paginate : {
-        nextClick   : null,
-        prevClick   : null,
-        firstPage   : null,
-        fromP       : null
+        nextClick       : null,
+        prevClick       : null,
+        firstPage       : null,
+        fromP           : null
     },
-    enterprise      : null,
-    adminEnterprise : null,
-    dataIdCorp      : null,
-    totalP          : null,
-    iddispatcher    : null,
-    totalAccount    : null,
-    dispatcherAvail : null
+    enterprise          : null,
+    adminEnterprise     : null,
+    dataIdCorp          : null,
+    totalP              : null,
+    iddispatcher        : null,
+    totalAccount        : null,
+    dispatcherAvail     : null,
+    selectedDispatchers : null
 };
 
 

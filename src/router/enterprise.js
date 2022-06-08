@@ -4,6 +4,7 @@ import EditC from '../views/pages/enterprise/edit-enterprise'
 import EditP from '../views/pages/inspector/edit-inspector'
 import EditAd from '../views/pages/enterprise/edit-admin'
 import DetailC from '../views/pages/enterprise/detail-enterprise'
+import DetailCMD from '../views/pages/enterprise/detail-enterprise-md'
 import DetailAd from '../views/pages/enterprise/detail-admin'
 import PicTaskL from '../views/pages/inspector/pic-task-list-page'
 import TemplateL from '../views/pages/tasktemplate/template-list'
@@ -117,6 +118,18 @@ export default [
             layout: layouts.navLeft,
             searchable: true,
             title: 'Detail-Enterprise',
+            tags: ['enterprise']
+        },
+    },
+    {
+        path: '/detail-enterprise-md/:id',
+        name: 'detail-enterprise-md',
+        component: DetailCMD,
+        meta: {
+            auth: true,
+            layout: layouts.navLeft,
+            searchable: true,
+            title: 'Detail-Enterprise-MD',
             tags: ['enterprise']
         },
     },

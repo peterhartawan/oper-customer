@@ -33,6 +33,7 @@ export const dispatcher                 = '/dispatcher/';
 export const dispatcher_role            = '/dispatcher?role=';
 export const search_dispatcher          = '/dispatcher?q=';
 export const assign_to_enteprise        = '/dispatcher/assign-to-enterprise';
+export const multi_to_enteprise         = '/dispatcher/multi-to-enterprise';
 
 //store/module/order-list
 export const order_open                 = '/order/open?page=';

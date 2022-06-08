@@ -85,6 +85,7 @@ export const ID_DISPATCHER              = 'dispatcher/index/ID_DISPATCHER'
 export const DISPATCHER                 = 'dispatcher/index/DISPATCHER'
 export const GET_TOTAL_ACCOUNT_DISPAT   = 'dispatcher/index/GET_TOTAL_ACCOUNT_DISPAT'
 export const GET_DISPATCHER_AVAILABLE   = 'dispatcher/index/GET_DISPATCHER_AVAILABLE'
+export const GET_SELECTED_DISPATCHERS   = 'dispatcher/index/GET_SELECTED_DISPATCHERS'
 
 //order-client/index
 export const GET_L_ORDER_CLIENT         = 'dispatcher/index/GET_L_ORDER_CLIENT'

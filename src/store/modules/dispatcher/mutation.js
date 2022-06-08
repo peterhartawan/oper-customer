@@ -26,6 +26,22 @@ export default {
         state.totalAccount = payload
     },
     [mutation.SET_DISPATCHER_AVAILABLE](state, payload){
+        // console.log('dispatcher check list update event fired.')
         state.dispatcherAvail = payload
-    }
+        if(state.selectedDispatchers == null){
+            state.selectedDispatchers = []
+            payload.forEach((element) => {
+                if(element.checked == true){
+                    state.selectedDispatchers.push(element)
+                }
+            })
+        }
+        // console.log(state.selectedDispatchers)
+    },
+    [mutation.SET_SELECTED_DISPATCHERS](state, payload){
+        state.selectedDispatchers = payload
+        // console.log(state.selectedDispatchers)
+        // console.log(payload)
+        // console.log(state.selectedDispatchers)
+    },
 };
