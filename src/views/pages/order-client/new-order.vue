@@ -66,7 +66,7 @@
           </el-col>
         </el-row>
 
-        <el-row>
+        <el-row v-if="this.identerprise != this.idcars24">
           <el-col :span="24">
             <el-col>
               <p>Locations</p>
@@ -74,7 +74,7 @@
             </el-col>
           </el-col>
         </el-row>
-        <el-row :gutter="20">
+        <el-row :gutter="20" v-if="this.identerprise != this.idcars24">
           <el-col :span="12">
             <div class="grid-content">
               <el-form-item prop="origin_latitude">
@@ -308,6 +308,8 @@ export default {
       }
     };
     return {
+      identerprise: "",
+      idcars24: "",
       options: null,
       vehicle_brands: null,
       origin: "",
@@ -540,6 +542,8 @@ export default {
     this.vehicle_brands = dataVehicle;
     this.$store.commit(mutation.SET_TEMPLATE_ID, null);
     this.$store.dispatch(action.TEMPLATE_LIST, 1);
+    this.identerprise = JSON.parse(localStorage.getItem('user')).client_enterprise_identerprise
+    this.idcars24 = process.env.VUE_APP_ID_ENTERPRISE_CARS24
   },
 };
 </script>
