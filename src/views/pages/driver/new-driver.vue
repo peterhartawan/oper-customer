@@ -70,6 +70,48 @@
             </el-row>
             <el-row :gutter="20">
                 <el-col :span="9">
+                    <el-form-item prop="ktpname">
+                        <div class="grid-content">
+                            <el-input disabled placeholder="Browse Foto KTP" v-model="form.ktpname" disable></el-input>
+                        </div>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="3">
+                    <div class="grid-content">
+                        <el-form-item prop="ktp">
+                            <el-button @click="onPickKTP">Browse</el-button>
+                            <input
+                                type="file"
+                                style="display: none"
+                                ref="ktpInput"
+                                accept="image/*"
+                                @change="handleKTPChange">
+                        </el-form-item>
+                    </div>
+                </el-col>
+                <el-col :span="9">
+                    <el-form-item prop="simname">
+                        <div class="grid-content">
+                            <el-input disabled placeholder="Browse Foto SIM" v-model="form.simname" disable></el-input>
+                        </div>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="3">
+                    <div class="grid-content">
+                        <el-form-item prop="sim">
+                            <el-button @click="onPickSIM">Browse</el-button>
+                            <input
+                                type="file"
+                                style="display: none"
+                                ref="simInput"
+                                accept="image/*"
+                                @change="handleSIMChange">
+                        </el-form-item>
+                    </div>
+                </el-col>
+            </el-row>
+            <el-row :gutter="20">
+                <el-col :span="9">
                     <el-form-item prop="photoname">
                         <div class="grid-content">
                             <el-input disabled placeholder="Browse Foto" v-model="form.photoname" disable></el-input>
@@ -123,6 +165,10 @@ export default {
                 nik: "",
                 gender: "",
                 photo: "",
+                ktp: null,
+                ktpname: "",
+                sim: null,
+                simname: "",
                 iddrivertype: "",
                 gender: "",
                 photoname: "",
@@ -171,6 +217,16 @@ export default {
                     message: "Driver Photo is required!",
                     trigger: "blur"
                 }],
+                ktpname: [{
+                    required: true,
+                    message: "Driver KTP Photo is required!",
+                    trigger: "blur"
+                }],
+                simname: [{
+                    required: true,
+                    message: "Driver SIM Photo is required!",
+                    trigger: "blur"
+                }],
             }
         };
     },
@@ -186,6 +242,8 @@ export default {
                 gender: this.form.gender,
                 idvendor: this.venID,
                 photo: this.form.photo,
+                ktp: this.form.ktp,
+                sim: this.form.sim,
                 attendance_longitude: this.form.attendance_longitude,
                 attendance_latitude: this.form.attendance_latitude,
             }
@@ -203,8 +261,22 @@ export default {
             this.$router.push('/driver')
 
         },
+        onPickKTP() {
+            this.$refs.ktpInput.click();
+        },
+        onPickSIM() {
+            this.$refs.simInput.click();
+        },
         onPickFile() {
             this.$refs.fileInput.click();
+        },
+        handleKTPChange(event) {
+            this.form.ktp = event.target.files[0];
+            this.form.ktpname = event.target.files[0].name;
+        },
+        handleSIMChange(event) {
+            this.form.sim = event.target.files[0];
+            this.form.simname = event.target.files[0].name;
         },
         handleFileChange(event) {
             this.form.file = event.target.files[0];
