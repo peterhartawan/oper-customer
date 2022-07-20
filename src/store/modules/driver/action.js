@@ -149,6 +149,8 @@ export default {
             formData.append('nik', payloads.nik)
             formData.append('gender', payloads.gender)
             formData.append('photo', payloads.photo)
+            formData.append('ktp', payloads.ktp)
+            formData.append('sim', payloads.sim)
             formData.append('attendance_latitude', payloads.attendance_latitude)
             formData.append('attendance_longitude', payloads.attendance_longitude)
 
@@ -179,7 +181,13 @@ export default {
             formData.append('attendance_latitude', payloads.attendance_latitude)
             formData.append('attendance_longitude', payloads.attendance_longitude)
             if(payloads.photo){
-            formData.append('photo', payloads.photo)
+                formData.append('photo', payloads.photo)
+            }
+            if(payloads.ktp){
+                formData.append('ktp', payloads.ktp)
+            }
+            if(payloads.sim){
+                formData.append('sim', payloads.sim)
             }
             if(payloads.typedriver){
                 formData.append('typedriver', payloads.typedriver)

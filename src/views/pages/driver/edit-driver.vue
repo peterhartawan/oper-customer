@@ -64,20 +64,54 @@
             </el-row>
             <el-row :gutter="20">
                 <el-col :span="9">
+                    <el-form-item prop="ktpname">
+                        <div class="grid-content">
+                            <el-input disabled placeholder="Browse Foto KTP" v-model="form.ktpname" disable></el-input>
+                        </div>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="3">
+                    <div class="grid-content">
+                        <el-form-item prop="ktp">
+                            <el-button @click="onPickKTP">Browse</el-button>
+                            <input
+                                        type="file"
+                                        style="display: none"
+                                        ref="ktpInput"
+                                        accept="image/*"
+                                        @change="handleKTPChange">
+                        </el-form-item>
+                    </div>
+                </el-col>
+                <el-col :span="9">
+                    <el-form-item prop="simname">
+                        <div class="grid-content">
+                            <el-input disabled placeholder="Browse Foto SIM" v-model="form.simname" disable></el-input>
+                        </div>
+                    </el-form-item>
+                </el-col>
+                <el-col :span="3">
+                    <div class="grid-content">
+                        <el-form-item prop="sim">
+                            <el-button @click="onPickSIM">Browse</el-button>
+                            <input
+                                        type="file"
+                                        style="display: none"
+                                        ref="simInput"
+                                        accept="image/*"
+                                        @change="handleSIMChange">
+                        </el-form-item>
+                    </div>
+                </el-col>
+            </el-row>
+            <el-row :gutter="20">
+                <el-col :span="9">
                     <el-form-item prop="photoname">
                         <div class="grid-content">
                             <el-input disabled placeholder="Browse Foto" v-model="form.photoname" disable></el-input>
                         </div>
                     </el-form-item>
                 </el-col>
-                <el-row :gutter="10">
-                    <el-col :lg="9">
-                        <el-select v-model="form.typedriver" filterable placeholder="Select">
-                            <el-option v-for="item in select.select" :key="item.iddrivertype" :label="item.name" :value="item.iddrivertype"></el-option>
-                        </el-select>
-                    </el-col>
-                </el-row>
-
                 <el-col :span="3">
                     <div class="grid-content">
                         <el-form-item prop="photo">
@@ -91,13 +125,18 @@
                         </el-form-item>
                     </div>
                 </el-col>
+                <el-col :lg="9">
+                    <el-select v-model="form.typedriver" filterable placeholder="Select">
+                        <el-option v-for="item in select.select" :key="item.iddrivertype" :label="item.name" :value="item.iddrivertype"></el-option>
+                    </el-select>
+                </el-col>
             </el-row>
         </el-form>
         <el-row>
-            <el-col :offset="20" :lg="2">
+            <el-col :offset="19" :lg="2">
                 <el-button :loading="button" @click="onSubmit('form')" type="success">Save</el-button>
             </el-col>
-            <el-col :lg="2">
+            <el-col :offset="1" :lg="2">
                 <el-button @click="Cancel()" type="succes">Cancel</el-button>
             </el-col>
         </el-row>
@@ -128,6 +167,10 @@ export default {
                 address: "",
                 gender: "",
                 nik: "",
+                ktp: null,
+                ktpname: "",
+                sim: null,
+                simname: "",
                 photo: null,
                 photoname: "",
                 iddriver: "",
@@ -192,6 +235,8 @@ export default {
                 address: this.form.address,
                 gender: this.form.gender,
                 photo: this.form.photo,
+                ktp: this.form.ktp,
+                sim: this.form.sim,
                 iddriver: this.form.iddriver,
                 typedriver: this.form.typedriver,
                 pkwt: this.form.pkwt,
@@ -212,8 +257,22 @@ export default {
                 path: "/driver"
             });
         },
+        onPickKTP() {
+            this.$refs.ktpInput.click();
+        },
+        onPickSIM() {
+            this.$refs.simInput.click();
+        },
         onPickFile() {
             this.$refs.fileInput.click();
+        },
+        handleKTPChange(event) {
+            this.form.ktp = event.target.files[0];
+            this.form.ktpname = event.target.files[0].name;
+        },
+        handleSIMChange(event) {
+            this.form.sim = event.target.files[0];
+            this.form.simname = event.target.files[0].name;
         },
         handleFileChange(event) {
             this.form.photo = event.target.files[0];
