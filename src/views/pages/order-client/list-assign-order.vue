@@ -106,7 +106,6 @@
                     value-format="yyyy-MM-dd"
                     style="width: 100%;"
                     v-model="form.range_date" 
-                    default-value="2019-06-01"
                     type="daterange"
                     start-placeholder="Start"
                     end-placeholder="End"
