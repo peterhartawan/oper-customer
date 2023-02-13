@@ -309,10 +309,26 @@
                 if(this.form.month === '' || this.form.month === '0' ){
                     swal('please select month (except all month)','', 'error')
                 }else {
+                    // let obj = {
+                    //     path    : `/order/${this.changeTab}`,
+                    //     month   : this.form.month
+                    // };                    
+                    
+                    let start, end;
+                        if(this.form.range_date === null || this.form.range_date === ''){
+                            start = '',
+                            end   = ''
+                        }else {
+                            start = this.form.range_date[0],
+                            end   = this.form.range_date[1]
+                        }
                     let obj = {
-                        path    : `/order/${this.changeTab}`,
-                        month   : this.form.month
+                        path            : this.rolePath,
+                        month           : this.form.month,
+                        start_date      : start,
+                        end_date        : end
                     };
+                    
                     data = await this.$store.dispatch(action.EXPORT_ORDER_LIST, obj)
                     let firstD = data.slice(1)
                     let secondD = firstD.slice(0, firstD.length -1)

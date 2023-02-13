@@ -170,7 +170,12 @@ export default {
     async [action.EXPORT_ORDER_LIST]({ commit, dispatch }, payload) {
         try {
             let token = localStorage.getItem('token');
-            let { data } = await localAxios.get(`${payload.path}?month=${payload.month}&export=1`,
+            let query = `${payload.path}?month=${payload.month}&export=1`;
+            if(payload.start_date !== '' && payload.end_date !== ''){
+                query = `${payload.path}?month=${payload.month}&from=${payload.start_date}&to=${payload.end_date}&export=1`;
+            }
+
+            let { data } = await localAxios.get(query,
                 {
                     headers: { 'Authorization': 'Bearer ' + token }
                 })
